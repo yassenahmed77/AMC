@@ -1,0 +1,13 @@
+# Allow all web crawlers and Googlebot to index public pages and product images
+User-agent: *
+Allow: /
+Allow: /products
+Allow: /about
+Allow: /contact
+Allow: /logo.png
+
+# Disallow indexing private admin portal
+Disallow: /admin
+
+# Sitemap location
+Sitemap: /sitemap.xml
