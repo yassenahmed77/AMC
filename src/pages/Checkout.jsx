@@ -139,16 +139,37 @@ function Checkout() {
                 .select()
                 .single();
 
-            if (error) throw error;
+            let finalOrderData = data;
 
-            // Trigger silent Telegram notification to store owner
-            sendOrderNotificationToTelegram(data);
+            if (error) {
+                console.error('Supabase orders insert error:', error);
+                // Fallback payload so Telegram notification is still sent if Supabase RLS fails
+                finalOrderData = {
+                    order_number: Math.floor(100000 + Math.random() * 900000),
+                    customer_name: formData.customerName.trim(),
+                    customer_phone: formData.customerPhone.trim(),
+                    customer_address: formData.customerAddress.trim(),
+                    customer_governorate: formData.customerGovernorate,
+                    clinic_name: formData.clinicName.trim() || null,
+                    items: orderItems,
+                    total_price: subtotal,
+                };
+            }
 
-            setOrderId(data.order_number);
+            // Always send Telegram notification to store owner / group
+            sendOrderNotificationToTelegram(finalOrderData);
+
+            setOrderId(finalOrderData.order_number);
             setSuccess(true);
             clearCart();
-            toast.success('Order placed successfully in pending status!');
+            
+            if (error) {
+                toast.success('Order submitted via Telegram! (Note: Please fix Supabase RLS policy)');
+            } else {
+                toast.success('Order placed successfully in pending status!');
+            }
         } catch (err) {
+            console.error('Checkout submit error:', err);
             toast.error(err.message || 'Failed to place the order.');
         } finally {
             setLoading(false);

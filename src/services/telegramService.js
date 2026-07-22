@@ -5,8 +5,9 @@ export async function sendOrderNotificationToTelegram(orderData) {
     const botToken = import.meta.env.VITE_TELEGRAM_BOT_TOKEN;
     const chatIdEnv = import.meta.env.VITE_TELEGRAM_CHAT_ID;
 
-    // Silent return if credentials are not set yet
+    // Warning if credentials are not set yet
     if (!botToken || !chatIdEnv) {
+        console.warn('Telegram notification skipped: Missing bot token or chat ID environment variables.');
         return;
     }
 
@@ -48,11 +49,16 @@ export async function sendOrderNotificationToTelegram(orderData) {
                     parse_mode: 'Markdown',
                     disable_web_page_preview: false
                 })
+            }).then(async res => {
+                const resData = await res.json();
+                if (!resData.ok) {
+                    console.error(`Telegram API error for chat_id (${chatId}):`, resData);
+                }
             })
         );
 
         await Promise.all(sendPromises);
-    } catch {
-        // Silently swallow errors so checkout flow is never interrupted
+    } catch (err) {
+        console.error('Telegram notification error:', err);
     }
 }
