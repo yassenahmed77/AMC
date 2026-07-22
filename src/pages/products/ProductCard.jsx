@@ -47,6 +47,8 @@ function ProductCard({ product }) {
                     alt={`${product.name} - AMC Medical Equipment Cairo Egypt`} 
                     className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500 ease-out"
                     loading="lazy"
+                    width={300}
+                    height={225}
                     onError={(e) => {
                         e.currentTarget.onerror = null;
                         e.currentTarget.src = '/logo.png';
