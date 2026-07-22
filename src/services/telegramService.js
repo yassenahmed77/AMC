@@ -3,12 +3,16 @@
  */
 export async function sendOrderNotificationToTelegram(orderData) {
     const botToken = import.meta.env.VITE_TELEGRAM_BOT_TOKEN;
-    const chatId = import.meta.env.VITE_TELEGRAM_CHAT_ID;
+    const chatIdEnv = import.meta.env.VITE_TELEGRAM_CHAT_ID;
 
     // Silent return if credentials are not set yet
-    if (!botToken || !chatId) {
+    if (!botToken || !chatIdEnv) {
         return;
     }
+
+    // Split chat IDs by comma to support multiple recipients
+    const chatIds = chatIdEnv.split(',').map(id => id.trim()).filter(Boolean);
+    if (chatIds.length === 0) return;
 
     try {
         const { order_number, customer_name, customer_phone, customer_governorate, customer_address, clinic_name, items, total_price } = orderData;
@@ -31,22 +35,23 @@ export async function sendOrderNotificationToTelegram(orderData) {
             `⚠️ *Action Required:* Please open the Dashboard to review customer details, calculate shipping fees, and confirm this order!\n\n` +
             `🔗 [Click Here to Confirm Order](${window.location.origin}/admin)`;
 
-        const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                chat_id: chatId,
-                text: message,
-                parse_mode: 'Markdown',
-                disable_web_page_preview: false
+        // Send to all chat IDs in parallel
+        const sendPromises = chatIds.map(chatId =>
+            fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: message,
+                    parse_mode: 'Markdown',
+                    disable_web_page_preview: false
+                })
             })
-        });
+        );
 
-        if (!response.ok) {
-            // Silently log or handle fail
-        }
+        await Promise.all(sendPromises);
     } catch {
         // Silently swallow errors so checkout flow is never interrupted
     }
