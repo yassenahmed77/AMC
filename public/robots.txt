@@ -10,4 +10,4 @@ Allow: /logo.png
 Disallow: /admin
 
 # Sitemap location
-Sitemap: /sitemap.xml
+Sitemap: https://www.amc-eg.net/sitemap.xml
