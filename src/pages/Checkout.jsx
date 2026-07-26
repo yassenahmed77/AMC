@@ -189,7 +189,7 @@ function Checkout() {
                                 <p className="text-slate-700 text-xs leading-relaxed font-semibold">
                                     تم تسجيل طلبك بنجاح، وسيقوم أحد ممثلي المبيعات بالتواصل معكم هاتفياً في أقرب وقت على الرقم 
                                     <span className="font-bold text-maincolor dir-ltr inline-block mx-1"> {formData.customerPhone} </span> 
-                                    لتأكيد السعر النهائي وتأكيد الطلب وخصومات الكميات المتاحة.
+                                    لتأكيد السعر النهائي وتأكيد الطلب.
                                 </p>
                             </div>
                         </div>
@@ -422,7 +422,7 @@ function Checkout() {
                                     📞 التواصل والتأكيد الفوري
                                 </span>
                                 <p className="text-xs text-slate-700 font-semibold leading-relaxed">
-                                    سيتم التواصل معك هاتفياً أو عبر الواتساب فور إرسال الطلب لتأكيد الأسعار، المعاينة، ومصاريف الشحن لمحافظتك.
+                                    سيتم التواصل معك هاتفياً أو عبر الواتساب فور إرسال الطلب لتأكيد السعر النهائي وتأكيد الطلب.
                                 </p>
                             </div>
                         </div>

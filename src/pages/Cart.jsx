@@ -53,7 +53,7 @@ function Cart() {
                             <div className="bg-blue-50/80 border border-blue-100 rounded-2xl p-4 flex items-start gap-3">
                                 <div className="text-maincolor text-lg">💡</div>
                                 <p className="text-xs sm:text-sm font-bold text-slate-700 leading-relaxed">
-                                    جميع الأسعار قابلة للتفاوض، وسيتم التواصل معكم فور إرسال الطلب لتأكيد السعر النهائي.
+                                    جميع الأسعار قابلة للتفاوض، وسيتم التواصل معكم فور إرسال الطلب لتأكيد السعر النهائي وتأكيد الطلب.
                                 </p>
                             </div>
 
@@ -124,7 +124,7 @@ function Cart() {
                                         📞 التواصل والتسليم
                                     </span>
                                     <p className="text-xs text-emerald-700 font-semibold leading-relaxed">
-                                        عند تأكيد الطلب، سيقوم مسئول المبيعات بالتواصل معكم هاتفياً أو عبر الواتساب فوراً لتوفير أفضل خصومات لمعاينة وتسليم الأجهزة.
+                                        سيتم التواصل معكم هاتفياً أو عبر الواتساب فور إرسال الطلب لتأكيد السعر النهائي وتأكيد الطلب.
                                     </p>
                                 </div>
                                 <div className="flex items-center justify-center gap-1.5 text-maincolor text-xs font-extrabold pt-2 pb-1 animate-bounce">
