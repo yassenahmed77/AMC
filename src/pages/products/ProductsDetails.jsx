@@ -154,7 +154,7 @@ function ProductsDetails() {
                                             السعر قابل للتفاوض
                                         </span>
                                         <span className="text-xs font-bold text-slate-500 block mt-1">
-                                            تواصل معنا هاتفياً أو عبر الواتساب لمعرفة تفاصيل السعر والمواصفات
+                                            تواصل معنا هاتفياً أو عبر الواتساب لمعرفة تفاصيل السعر
                                         </span>
                                     </div>
                                 )}

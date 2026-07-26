@@ -53,7 +53,7 @@ function Cart() {
                             <div className="bg-blue-50/80 border border-blue-100 rounded-2xl p-4 flex items-start gap-3">
                                 <div className="text-maincolor text-lg">💡</div>
                                 <p className="text-xs sm:text-sm font-bold text-slate-700 leading-relaxed">
-                                    جميع الأسعار قابلة للتفاوض، وسيتم التواصل معكم فور تأكيد الطلب لتزويدكم بالمواصفات النهائية وخصومات الكميات للأجهزة الطبية.
+                                    جميع الأسعار قابلة للتفاوض، وسيتم التواصل معكم فور إرسال الطلب لتأكيد السعر النهائي.
                                 </p>
                             </div>
 

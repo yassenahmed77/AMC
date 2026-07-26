@@ -34,7 +34,7 @@ export async function sendOrderNotificationToTelegram(orderData) {
             `🛒 *Requested Items:*\n${itemsText}\n\n` +
             `💰 *Pricing Status:* ${total_price ? `${total_price.toLocaleString()} EGP` : 'Price Negotiable / السعر قابل للتفاوض'}\n\n` +
             `⚠️ *ACTION REQUIRED / المطلوب الآن:*\n` +
-            `1️⃣ Contact customer on \`${customer_phone}\` to finalize device specs & agreed price.\n` +
+            `1️⃣ Contact customer on \`${customer_phone}\` to finalize agreed price & confirm order.\n` +
             `2️⃣ Open Admin Dashboard, click *Set Price & Confirm*, input agreed prices & confirm order.\n\n` +
             `📌 *تواصل مع العميل، ثم ادخل على اللوحة لإدخال السعر المتفق عليه وتأكيد الطلب!*\n\n` +
             `🔗 [Open Admin Dashboard to Set Price](${window.location.origin}/admin)`;
