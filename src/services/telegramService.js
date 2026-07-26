@@ -24,17 +24,20 @@ export async function sendOrderNotificationToTelegram(orderData) {
             : 'No items listed';
 
         // Construct Markdown formatted message
-        const message = `🚨 *NEW ORDER RECEIVED!* 🚨\n\n` +
-            `📦 *Order Number:* #${order_number}\n` +
+        const message = `🚨 *NEW QUOTE REQUEST RECEIVED!* 🚨\n\n` +
+            (order_number ? `📦 *Order Number:* #${order_number}\n` : '') +
             `👤 *Customer Name:* ${customer_name}\n` +
-            `📞 *Phone Number:* ${customer_phone}\n` +
+            `📞 *Phone Number:* \`${customer_phone}\`\n` +
             (clinic_name ? `🏥 *Clinic/Hospital:* ${clinic_name}\n` : '') +
             `📍 *Governorate:* ${customer_governorate}\n` +
             `🏡 *Address:* ${customer_address}\n\n` +
-            `🛒 *Order Items:*\n${itemsText}\n\n` +
-            `💰 *Subtotal:* ${total_price ? `${total_price.toLocaleString()} EGP` : 'Quote'}\n\n` +
-            `⚠️ *Action Required:* Please open the Dashboard to review customer details, calculate shipping fees, and confirm this order!\n\n` +
-            `🔗 [Click Here to Confirm Order](${window.location.origin}/admin)`;
+            `🛒 *Requested Items:*\n${itemsText}\n\n` +
+            `💰 *Pricing Status:* ${total_price ? `${total_price.toLocaleString()} EGP` : 'Price Negotiable / السعر قابل للتفاوض'}\n\n` +
+            `⚠️ *ACTION REQUIRED / المطلوب الآن:*\n` +
+            `1️⃣ Contact customer on \`${customer_phone}\` to finalize device specs & agreed price.\n` +
+            `2️⃣ Open Admin Dashboard, click *Set Price & Confirm*, input agreed prices & confirm order.\n\n` +
+            `📌 *تواصل مع العميل، ثم ادخل على اللوحة لإدخال السعر المتفق عليه وتأكيد الطلب!*\n\n` +
+            `🔗 [Open Admin Dashboard to Set Price](${window.location.origin}/admin)`;
 
         // Send to all chat IDs in parallel
         const sendPromises = chatIds.map(chatId =>

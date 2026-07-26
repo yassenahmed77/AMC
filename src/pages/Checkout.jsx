@@ -124,7 +124,7 @@ function Checkout() {
                 quantity: item.quantity
             }));
 
-            const { data, error } = await supabase
+            const { error } = await supabase
                 .from('orders')
                 .insert({
                     customer_name: formData.customerName.trim(),
@@ -134,20 +134,25 @@ function Checkout() {
                     clinic_name: formData.clinicName.trim() || null,
                     items: orderItems,
                     total_price: subtotal,
-                    status: 'pending' // Order starts as pending (unconfirmed)
-                })
-                .select()
-                .single();
+                    status: 'pending'
+                });
 
             if (error) throw error;
 
             // Trigger instant Telegram notification to store owner / group ONLY on database success
-            sendOrderNotificationToTelegram(data);
+            sendOrderNotificationToTelegram({
+                customer_name: formData.customerName.trim(),
+                customer_phone: formData.customerPhone.trim(),
+                customer_address: formData.customerAddress.trim(),
+                customer_governorate: formData.customerGovernorate,
+                clinic_name: formData.clinicName.trim() || null,
+                items: orderItems,
+                total_price: subtotal
+            });
 
-            setOrderId(data.order_number);
             setSuccess(true);
             clearCart();
-            toast.success('Order placed successfully in pending status!');
+            toast.success('Order placed successfully!');
         } catch (err) {
             console.error('Checkout submit error:', err);
             toast.error(err.message || 'Failed to place the order.');
@@ -157,40 +162,54 @@ function Checkout() {
     };
 
     if (success) {
+        const whatsappOrderMsg = encodeURIComponent(
+            `السلام عليكم، قمت بإرسال طلب عرض سعر جديد عبر الموقع:\n` +
+            `• الاسم: ${formData.customerName}\n` +
+            `• رقم الهاتف: ${formData.customerPhone}\n` +
+            `• العيادة/المستشفى: ${formData.clinicName || 'غير محدد'}\n` +
+            `• المحافظة: ${formData.customerGovernorate}`
+        );
+
         return (
             <section className="min-h-screen bg-slate-50/50 py-16 flex items-center justify-center">
                 <div className="container px-4 flex justify-center">
                     <div className="flex flex-col items-center justify-center py-16 px-6 sm:px-12 bg-white rounded-3xl border border-slate-100 shadow-xl text-center max-w-2xl w-full relative overflow-hidden">
                         <div className="w-24 h-24 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 mb-8 border border-emerald-100 shadow-sm relative z-10">
-                            <CheckCircle2 size={48} className="animate-pulse" />
+                            <CheckCircle2 size={48} className="animate-pulse text-emerald-500" />
                         </div>
                         
-                        <h1 className="text-3xl font-black text-slate-800 tracking-tight leading-tight mb-4 uppercase">
-                            Order Placed Successfully!
+                        <h1 className="text-2xl sm:text-3xl font-black text-slate-800 tracking-tight leading-tight mb-4 uppercase">
+                            تم استلام طلب العرض بنجاح!
                         </h1>
-                        
-                        <p className="text-sm font-semibold text-slate-400 mb-2">
-                            Order Number: <span className="font-mono text-slate-800 font-black">#{orderId}</span>
-                        </p>
 
-                        <div className="bg-amber-50/50 border border-amber-200/60 rounded-2xl p-6 text-left max-w-md w-full my-6 flex gap-4">
-                            <PhoneCall className="w-6 h-6 text-amber-600 shrink-0 mt-0.5" />
+                        <div className="bg-blue-50/70 border border-blue-100 rounded-2xl p-6 text-right max-w-md w-full my-6 flex gap-4">
+                            <PhoneCall className="w-6 h-6 text-maincolor shrink-0 mt-0.5" />
                             <div>
-                                <h3 className="font-bold text-amber-800 text-sm uppercase mb-1">What Happens Next?</h3>
-                                <p className="text-amber-700/95 text-xs leading-relaxed">
-                                    Your order is currently <strong>Pending Confirmation</strong>. 
-                                    We will contact you via phone shortly on 
-                                    <span className="font-bold text-slate-800"> {formData.customerPhone} </span> 
-                                    to confirm your order details and specify the exact shipping fees. 
-                                    Your items are reserved until confirmation.
+                                <h3 className="font-bold text-maincolor text-sm uppercase mb-1">ماذا يحدث الآن؟</h3>
+                                <p className="text-slate-700 text-xs leading-relaxed font-semibold">
+                                    تم تسجيل طلبك بنجاح، وسيقوم أحد ممثلي المبيعات بالتواصل معكم هاتفياً في أقرب وقت على الرقم 
+                                    <span className="font-bold text-maincolor dir-ltr inline-block mx-1"> {formData.customerPhone} </span> 
+                                    لتأكيد مواصفات الأجهزة، الأسعار النهائية، وخصومات الكميات المتاحة.
                                 </p>
                             </div>
                         </div>
 
-                        <Link to="/products" className="inline-flex items-center gap-2 bg-maincolor text-white px-8 py-3.5 rounded-xl font-bold shadow-lg shadow-maincolor/30 hover:bg-maincolor/90 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 cursor-pointer">
-                            <ArrowLeft size={16} />
-                            <span>Return to Products</span>
-                        </Link>
+                        <div className="flex flex-col sm:flex-row items-center gap-3 w-full max-w-md">
+                            <a 
+                                href={`https://wa.me/201005183039?text=${whatsappOrderMsg}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-full flex-1 inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3.5 rounded-xl font-bold text-xs sm:text-sm shadow-lg shadow-emerald-600/20 hover:shadow-xl transition-all duration-300 cursor-pointer"
+                            >
+                                <span>متابعة الطلب عبر الواتساب فوراً 💬</span>
+                            </a>
+                            <Link 
+                                to="/products" 
+                                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 px-5 py-3.5 rounded-xl font-bold text-xs sm:text-sm transition-all duration-300 cursor-pointer shrink-0"
+                            >
+                                <span>الرئيسية</span>
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -360,7 +379,7 @@ function Checkout() {
                                     loading ? 'opacity-80 cursor-not-allowed' : ''
                                 }`}
                             >
-                                {loading ? 'Placing Order...' : 'Place Order'}
+                                {loading ? 'Submitting Order...' : 'Place Order'}
                             </button>
                         </form>
                     </div>
@@ -371,34 +390,39 @@ function Checkout() {
                         
                         <div className="flex flex-col gap-4 max-h-[300px] overflow-y-auto pr-1">
                             {cartItems.map((item) => (
-                                <div key={item.id} className="flex gap-4 items-center">
-                                    <div className="w-12 h-12 bg-white rounded-lg border border-slate-100 p-1 flex items-center justify-center shrink-0">
-                                        <img src={item.main_image} alt={item.name} className="max-w-full max-h-full object-contain" />
+                                <div key={item.id} className="flex gap-4 items-center justify-between">
+                                    <div className="flex items-center gap-3 min-w-0">
+                                        <div className="w-12 h-12 bg-white rounded-lg border border-slate-100 p-1 flex items-center justify-center shrink-0">
+                                            <img src={item.main_image} alt={item.name} className="max-w-full max-h-full object-contain" />
+                                        </div>
+                                        <div className="flex-grow min-w-0">
+                                            <h4 className="font-bold text-slate-800 text-sm truncate uppercase">{item.name}</h4>
+                                            <span className="text-slate-400 text-xs font-semibold block">Qty: {item.quantity}</span>
+                                        </div>
                                     </div>
-                                    <div className="flex-grow min-w-0">
-                                        <h4 className="font-bold text-slate-800 text-sm truncate uppercase">{item.name}</h4>
-                                        <span className="text-slate-400 text-xs font-semibold">Qty: {item.quantity}</span>
-                                    </div>
-                                    <span className="text-slate-800 text-sm font-bold shrink-0">
-                                        {item.price ? `${(item.price * item.quantity).toLocaleString()} EGP` : 'Quote'}
-                                    </span>
+                                    {item.price ? (
+                                        <span className="text-slate-800 text-xs font-bold shrink-0 font-mono">
+                                            {(item.price * item.quantity).toLocaleString()} EGP
+                                        </span>
+                                    ) : null}
                                 </div>
                             ))}
                         </div>
 
                         <div className="flex flex-col gap-4 border-t border-slate-100 pt-4">
-                            <div className="flex justify-between items-baseline">
-                                <span className="text-sm font-bold text-slate-800 uppercase">Subtotal</span>
-                                <div className="text-right">
-                                    <span className="text-xl font-black text-maincolor">{subtotal.toLocaleString()}</span>
-                                    <span className="text-xs font-bold text-maincolor ml-1">EGP</span>
-                                </div>
+                            <div className="flex justify-between items-center border-b border-slate-100 pb-4">
+                                <span className="text-xs font-bold text-slate-700 uppercase">Pricing Status</span>
+                                <span className="text-xs font-bold text-maincolor bg-blue-50 px-2.5 py-1 rounded-lg border border-blue-100">
+                                    التواصل المباشر للتسعير
+                                </span>
                             </div>
-                            
-                            <div className="bg-slate-50 border border-slate-150 rounded-2xl p-4 flex flex-col gap-2">
-                                <span className="text-[10px] text-amber-700 bg-amber-50 border border-amber-100 px-2 py-0.5 rounded-full font-bold uppercase w-fit">Note</span>
-                                <p className="text-xs text-slate-500 font-semibold leading-relaxed">
-                                    * Shipping fees are not calculated here. We will calculate them based on your governorate and inform you during the confirmation call.
+
+                            <div className="bg-blue-50/70 border border-blue-100 rounded-2xl p-4 flex flex-col gap-1.5">
+                                <span className="text-xs font-bold text-maincolor flex items-center gap-1.5">
+                                    📞 التواصل والتأكيد الفوري
+                                </span>
+                                <p className="text-xs text-slate-700 font-semibold leading-relaxed">
+                                    سيتم التواصل معك هاتفياً أو عبر الواتساب فور إرسال الطلب لتأكيد الأسعار، المعاينة، ومصاريف الشحن لمحافظتك.
                                 </p>
                             </div>
                         </div>

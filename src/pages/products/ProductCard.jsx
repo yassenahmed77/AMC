@@ -1,5 +1,5 @@
 import { Link } from 'react-router';
-import { Eye, ShoppingCart, AlertTriangle } from 'lucide-react';
+import { Eye, ShoppingCart, AlertTriangle, Phone } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 
 function ProductCard({ product }) {
@@ -68,7 +68,7 @@ function ProductCard({ product }) {
                 {product.description}
             </p>
 
-            {/* Footer section: Price & Add To Cart button */}
+            {/* Footer section: Price & Action buttons */}
             <div className="mt-auto pt-3 border-t border-slate-50 flex flex-col gap-3">
                 <div className="flex justify-between items-baseline">
                     <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Price</span>
@@ -78,30 +78,44 @@ function ProductCard({ product }) {
                             <span className="text-xs font-bold text-maincolor">EGP</span>
                         </div>
                     ) : (
-                        <span className="text-sm font-extrabold text-primarycolor italic">Request Quote</span>
+                        <span className="text-sm font-extrabold text-maincolor bg-blue-50 px-2.5 py-0.5 rounded-lg border border-blue-100">
+                            السعر قابل للتفاوض
+                        </span>
                     )}
                 </div>
 
-                <button 
-                    onClick={handleAddToCart}
-                    disabled={isOutOfStock || isMaxReached}
-                    className={`w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 ${
-                        isOutOfStock 
-                            ? 'bg-slate-100 text-slate-400 cursor-not-allowed'
-                            : isMaxReached
-                            ? 'bg-amber-50/50 text-amber-700 border border-amber-200/60 cursor-not-allowed'
-                            : 'bg-transparent text-maincolor border-2 border-maincolor hover:bg-maincolor hover:text-white cursor-pointer'
-                    }`}
-                >
-                    <ShoppingCart className="w-4 h-4" />
-                    <span>
-                        {isOutOfStock 
-                            ? 'Sold Out' 
-                            : isMaxReached 
-                            ? 'Max Qty Added' 
-                            : 'Add to Cart'}
-                    </span>
-                </button>
+                <div className="flex items-center gap-2">
+                    <button 
+                        onClick={handleAddToCart}
+                        disabled={isOutOfStock || isMaxReached}
+                        className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-xs font-bold transition-all duration-300 ${
+                            isOutOfStock 
+                                ? 'bg-slate-100 text-slate-400 cursor-not-allowed'
+                                : isMaxReached
+                                ? 'bg-amber-50/50 text-amber-700 border border-amber-200/60 cursor-not-allowed'
+                                : 'bg-transparent text-maincolor border-2 border-maincolor hover:bg-maincolor hover:text-white cursor-pointer'
+                        }`}
+                    >
+                        <ShoppingCart className="w-3.5 h-3.5" />
+                        <span>
+                            {isOutOfStock 
+                                ? 'Sold Out' 
+                                : isMaxReached 
+                                ? 'Max Added' 
+                                : 'Add to Cart'}
+                        </span>
+                    </button>
+
+                    <a 
+                        href="tel:01122199076"
+                        onClick={(e) => e.stopPropagation()}
+                        className="flex items-center justify-center gap-1 bg-emerald-500 hover:bg-emerald-600 text-white px-3 py-2.5 rounded-xl text-xs font-bold transition-all duration-300 shadow-sm shadow-emerald-500/20 shrink-0"
+                        title="Call Us Now"
+                    >
+                        <Phone className="w-3.5 h-3.5" />
+                        <span>Call</span>
+                    </a>
+                </div>
             </div>
         </div>
     );

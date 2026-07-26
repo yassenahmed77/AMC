@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { useParams } from 'react-router';
+import { useParams, Link } from 'react-router';
 import { supabase } from '../../lib/supabase';
 import { useCart } from '../../context/CartContext';
 import SEO from '../../components/SEO';
-import { AlertCircle, ShoppingCart, Activity, AlertTriangle, Minus, Plus } from 'lucide-react';
+import { AlertCircle, ShoppingCart, Activity, AlertTriangle, Minus, Plus, Phone, MessageSquare } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 async function fetchProductById(productId) {
@@ -40,7 +40,7 @@ function ProductsDetails() {
     const handleAddToCart = () => {
         if (isMaxReached) return;
         addToCart(product, qty);
-        setQty(1); // Reset to 1 after adding
+        setQty(1); // Reset selector to 1 after adding
     };
 
     if (loading) {
@@ -80,11 +80,12 @@ function ProductsDetails() {
     const isOutOfStock = product.quantity === 0 || product.quantity === null;
     const quantityInCart = getItemQuantityInCart(product.id);
     const isMaxReached = !isOutOfStock && quantityInCart >= product.quantity;
+    const whatsappMessage = encodeURIComponent(`السلام عليكم، محتاج أستفسر عن سعر جهاز: ${product.name}`);
 
     return (
         <section className="py-12 bg-slate-50/50 min-h-screen">
             <SEO 
-                title={`${product.name} - Price & Specs`} 
+                title={`${product.name} - AMC Medical Equipment`} 
                 description={product.description?.slice(0, 160) || "Certified medical equipment available at AMC Medical Store Egypt."} 
                 image={product.main_image} 
             />
@@ -148,7 +149,14 @@ function ProductsDetails() {
                                         <span className="text-sm font-bold text-maincolor">EGP</span>
                                     </div>
                                 ) : (
-                                    <span className="text-xl sm:text-2xl font-black text-primarycolor italic">Request Quote</span>
+                                    <div>
+                                        <span className="text-xl sm:text-2xl font-black text-maincolor inline-block bg-blue-50 px-3 py-1 rounded-xl border border-blue-100">
+                                            السعر قابل للتفاوض
+                                        </span>
+                                        <span className="text-xs font-bold text-slate-500 block mt-1">
+                                            تواصل معنا هاتفياً أو عبر الواتساب لمعرفة تفاصيل السعر والمواصفات
+                                        </span>
+                                    </div>
                                 )}
                             </div>
 
@@ -175,7 +183,7 @@ function ProductsDetails() {
 
                         {/* Description */}
                         <div>
-                            <h3 className="font-bold text-slate-800 mb-2 text-base sm:text-lg">Product Description</h3>
+                            <h3 className="font-bold text-slate-800 mb-2 text-base sm:text-lg">Product Description & Specs</h3>
                             <p className="text-slate-600 text-sm sm:text-base leading-relaxed whitespace-pre-line">
                                 {product.description}
                             </p>
@@ -218,7 +226,7 @@ function ProductsDetails() {
                         )}
 
                         {/* Action Buttons */}
-                        <div className="pt-2">
+                        <div className="pt-2 flex flex-col sm:flex-row items-center gap-3">
                             {/* Add to Cart */}
                             {isOutOfStock ? (
                                 <div className="w-full flex items-center justify-center gap-2 bg-slate-100 text-slate-400 font-bold px-6 py-4 rounded-2xl cursor-not-allowed">
@@ -235,12 +243,32 @@ function ProductsDetails() {
                             ) : (
                                 <button 
                                     onClick={handleAddToCart}
-                                    className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-maincolor to-blue-700 text-white font-bold px-6 py-4 rounded-2xl shadow-lg shadow-maincolor/10 hover:shadow-xl hover:shadow-maincolor/20 hover:-translate-y-0.5 active:translate-y-0 active:scale-100 transition-all duration-300 cursor-pointer"
+                                    className="w-full sm:flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-maincolor to-blue-700 text-white font-bold px-6 py-4 rounded-2xl shadow-lg shadow-maincolor/10 hover:shadow-xl hover:shadow-maincolor/20 hover:-translate-y-0.5 active:translate-y-0 active:scale-100 transition-all duration-300 cursor-pointer"
                                 >
                                     <ShoppingCart className="w-5 h-5" />
                                     <span>Add to Cart</span>
                                 </button>
                             )}
+
+                            {/* Direct Call Button */}
+                            <a 
+                                href="tel:01122199076"
+                                className="w-full sm:w-auto flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-4 rounded-2xl shadow-lg shadow-emerald-600/20 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 cursor-pointer shrink-0"
+                            >
+                                <Phone className="w-5 h-5" />
+                                <span>Call Now</span>
+                            </a>
+
+                            {/* WhatsApp Button */}
+                            <a 
+                                href={`https://wa.me/201005183039?text=${whatsappMessage}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-full sm:w-auto flex items-center justify-center gap-2 bg-slate-900 hover:bg-black text-white font-bold px-6 py-4 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 cursor-pointer shrink-0"
+                            >
+                                <MessageSquare className="w-5 h-5 text-emerald-400" />
+                                <span>WhatsApp</span>
+                            </a>
                         </div>
 
                     </div>

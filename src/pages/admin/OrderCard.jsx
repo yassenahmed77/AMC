@@ -1,6 +1,6 @@
 import { Clock, CheckCircle2, XCircle, User, Phone, Building2, MapPin } from 'lucide-react';
 
-function OrderCard({ order, actionLoadingId, onRequestConfirm, onRequestCancel }) {
+function OrderCard({ order, actionLoadingId, onRequestConfirm, onRequestCancel, onOpenPriceModal }) {
     const isProcessing = actionLoadingId === order.id;
 
     return (
@@ -108,24 +108,35 @@ function OrderCard({ order, actionLoadingId, onRequestConfirm, onRequestCancel }
                     </div>
 
                     {/* Actions */}
-                    {order.status === 'pending' && (
-                        <div className="flex gap-2 w-full sm:w-auto">
+                    <div className="flex gap-2 w-full sm:w-auto items-center">
+                        {order.status === 'pending' && (
+                            <>
+                                <button
+                                    onClick={() => onRequestCancel(order.id)}
+                                    disabled={actionLoadingId !== null}
+                                    className="flex-1 sm:flex-none border-2 border-rose-100 hover:border-rose-200 text-rose-600 hover:bg-rose-50 px-4 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 cursor-pointer disabled:opacity-50"
+                                >
+                                    Cancel
+                                </button>
+                                <button
+                                    onClick={() => onOpenPriceModal(order)}
+                                    disabled={actionLoadingId !== null}
+                                    className="flex-1 sm:flex-none bg-emerald-600 hover:bg-emerald-700 text-white shadow-md shadow-emerald-600/20 px-5 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 cursor-pointer disabled:opacity-50"
+                                >
+                                    Set Price & Confirm 💰
+                                </button>
+                            </>
+                        )}
+
+                        {order.status === 'confirmed' && (
                             <button
-                                onClick={() => onRequestCancel(order.id)}
-                                disabled={actionLoadingId !== null}
-                                className="flex-1 sm:flex-none border-2 border-rose-100 hover:border-rose-200 text-rose-600 hover:bg-rose-50 px-4 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 cursor-pointer disabled:opacity-50"
+                                onClick={() => onOpenPriceModal(order)}
+                                className="flex-1 sm:flex-none border border-slate-200 hover:bg-slate-50 text-slate-700 px-4 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer"
                             >
-                                Cancel
+                                Edit Agreed Price ✏️
                             </button>
-                            <button
-                                onClick={() => onRequestConfirm(order.id)}
-                                disabled={actionLoadingId !== null}
-                                className="flex-1 sm:flex-none bg-emerald-600 hover:bg-emerald-700 text-white shadow-md shadow-emerald-600/20 px-5 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 cursor-pointer disabled:opacity-50"
-                            >
-                                {isProcessing ? 'Confirming...' : 'Confirm Order'}
-                            </button>
-                        </div>
-                    )}
+                        )}
+                    </div>
                 </div>
             </div>
         </div>

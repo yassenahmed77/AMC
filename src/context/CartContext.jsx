@@ -19,7 +19,7 @@ export function CartProvider({ children }) {
         localStorage.setItem('amc_cart', JSON.stringify(cartItems));
     }, [cartItems]);
 
-    const addToCart = (product, qty = 1) => {
+    const addToCart = (product, qty = 1, showToast = true) => {
         const available = typeof product.quantity === 'number' ? product.quantity : 0;
         
         if (available <= 0) {
@@ -48,14 +48,22 @@ export function CartProvider({ children }) {
             return [...prevItems, { ...product, quantity: qty }];
         });
 
-        toast.success(
-            <div className="flex flex-col text-left gap-1">
-                <span className="font-semibold text-slate-800 text-sm">{product.name} added to cart!</span>
-                <Link to="/cart" className="text-xs font-bold text-maincolor hover:text-primarycolor transition-colors w-fit">
-                    View Cart →
-                </Link>
-            </div>
-        );
+        if (showToast) {
+            toast((t) => (
+                <div className="flex items-center justify-between gap-3 w-full">
+                    <span className="text-xs font-bold text-slate-800">
+                        تمت إضافة <strong>{product.name}</strong> للسلة بنجاح!
+                    </span>
+                    <Link 
+                        to="/cart" 
+                        onClick={() => toast.dismiss(t.id)}
+                        className="bg-maincolor text-white px-3 py-1.5 rounded-lg text-xs font-black shrink-0 hover:bg-maincolor/90 transition-colors shadow-sm"
+                    >
+                        الذهاب للسلة 🛒
+                    </Link>
+                </div>
+            ), { id: `add-to-cart-${product.id}`, duration: 4000, position: 'bottom-right' });
+        }
     };
 
     const decreaseQuantity = (productId) => {

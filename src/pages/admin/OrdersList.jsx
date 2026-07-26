@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '../../lib/supabase';
 import OrderCard from './OrderCard';
+import EditOrderPriceModal from './EditOrderPriceModal';
 import { ShoppingCart, RefreshCw, Search, X } from 'lucide-react';
 import toast from 'react-hot-toast';
 
@@ -10,6 +11,7 @@ function OrdersList() {
     const [filter, setFilter] = useState('all'); // 'all', 'pending', 'confirmed', 'cancelled'
     const [searchQuery, setSearchQuery] = useState('');
     const [actionLoadingId, setActionLoadingId] = useState(null);
+    const [selectedOrderForPriceModal, setSelectedOrderForPriceModal] = useState(null);
 
     async function fetchOrders() {
         setLoading(true);
@@ -234,10 +236,19 @@ function OrdersList() {
                             actionLoadingId={actionLoadingId}
                             onRequestConfirm={requestConfirmOrder}
                             onRequestCancel={requestCancelOrder}
+                            onOpenPriceModal={(ord) => setSelectedOrderForPriceModal(ord)}
                         />
                     ))}
                 </div>
             )}
+
+            {/* Price Editor Modal */}
+            <EditOrderPriceModal 
+                order={selectedOrderForPriceModal}
+                isOpen={!!selectedOrderForPriceModal}
+                onClose={() => setSelectedOrderForPriceModal(null)}
+                onSaveSuccess={fetchOrders}
+            />
         </div>
     );
 }
