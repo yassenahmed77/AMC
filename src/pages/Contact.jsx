@@ -4,7 +4,12 @@ function Contact() {
     const phoneNumber = "011 22199076";
     const whatsappNumber = "+20 10 05183039";
     const whatsappClean = "201005183039";
-    const address = "Building 1, 41 Street, District 5110, from 9 Street, Deplomasyeen Area, Mokattam - Cairo";
+    const address1 = "Building 1, 41 Street, District 5110, from 9 Street, Deplomasyeen Area, Mokattam - Cairo";
+    const address1Map = "https://maps.google.com/?q=Mokattam,+Cairo,+Egypt";
+
+    const address2 = "Building 9019, Street 72, Beside El Gezira High Institute";
+    const address2Map = "https://maps.app.goo.gl/HCnjvwGAScNn5NBb9?g_st=iw";
+
     const email = "medicalsolutionsamc@gmail.com";
 
     return (
@@ -70,27 +75,44 @@ function Contact() {
                         </a>
                     </div>
 
-                    {/* 3. Showroom Address */}
+                    {/* 3. Showroom & Office Locations */}
                     <div className="bg-white border border-maincolor/15 rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col justify-between">
                         <div>
                             <div className="w-12 h-12 rounded-2xl bg-primarycolor/10 text-primarycolor flex items-center justify-center mb-5 border border-primarycolor/20">
                                 <MapPin className="w-6 h-6" />
                             </div>
-                            <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest mb-1">Location / Office</h3>
-                            <p className="text-sm font-extrabold text-slate-800 leading-snug mb-2">{address}</p>
-                            <p className="text-slate-500 text-xs leading-relaxed font-medium mb-6">
-                                Visit our location for device inspection & pick-up.
-                            </p>
+                            <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest mb-3">Our Branches</h3>
+                            
+                            {/* Branch 1 */}
+                            <div className="mb-4 pb-3 border-b border-slate-100">
+                                <span className="text-[11px] font-black uppercase text-maincolor tracking-wider block mb-1">Branch 1 (Mokattam)</span>
+                                <p className="text-xs font-bold text-slate-700 leading-snug mb-2">{address1}</p>
+                                <a 
+                                    href={address1Map}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-1.5 text-[11px] font-black text-slate-800 hover:text-maincolor transition-colors"
+                                >
+                                    <MapPin size={12} className="text-primarycolor" />
+                                    <span>Branch 1 Map →</span>
+                                </a>
+                            </div>
+
+                            {/* Branch 2 */}
+                            <div className="mb-2">
+                                <span className="text-[11px] font-black uppercase text-maincolor tracking-wider block mb-1">Branch 2 (Gezira Institute)</span>
+                                <p className="text-xs font-bold text-slate-700 leading-snug mb-2">{address2}</p>
+                                <a 
+                                    href={address2Map}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-1.5 text-[11px] font-black text-slate-800 hover:text-maincolor transition-colors"
+                                >
+                                    <MapPin size={12} className="text-primarycolor" />
+                                    <span>Branch 2 Map →</span>
+                                </a>
+                            </div>
                         </div>
-                        <a 
-                            href="https://maps.google.com/?q=Mokattam,+Cairo,+Egypt"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="w-full inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 rounded-xl text-xs uppercase tracking-wider transition-colors duration-200"
-                        >
-                            <MapPin size={14} />
-                            <span>Open in Maps</span>
-                        </a>
                     </div>
 
                     {/* 4. Official Email */}
