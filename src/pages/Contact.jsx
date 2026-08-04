@@ -31,12 +31,12 @@ function Contact() {
                     </p>
                 </div>
 
-                {/* 6 Primary Touchpoint Cards */}
+                {/* 7 Primary Touchpoint Cards */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
                     
                     {/* 1. Phone Call */}
-                    <div className="bg-white border border-maincolor/15 rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col justify-between">
-                        <div>
+                    <div className="bg-white border border-maincolor/15 rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col justify-between items-center text-center">
+                        <div className="flex flex-col items-center text-center w-full">
                             <div className="w-12 h-12 rounded-2xl bg-maincolor/10 text-maincolor flex items-center justify-center mb-5 border border-maincolor/20">
                                 <Phone className="w-6 h-6" />
                             </div>
@@ -56,8 +56,8 @@ function Contact() {
                     </div>
 
                     {/* 2. WhatsApp Direct Chat */}
-                    <div className="bg-white border border-emerald-500/20 rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col justify-between">
-                        <div>
+                    <div className="bg-white border border-emerald-500/20 rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col justify-between items-center text-center">
+                        <div className="flex flex-col items-center text-center w-full">
                             <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center mb-5 border border-emerald-500/20">
                                 <MessageCircle className="w-6 h-6" />
                             </div>
@@ -79,8 +79,8 @@ function Contact() {
                     </div>
 
                     {/* 3. Official Email */}
-                    <div className="bg-white border border-maincolor/15 rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col justify-between">
-                        <div>
+                    <div className="bg-white border border-maincolor/15 rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col justify-between items-center text-center">
+                        <div className="flex flex-col items-center text-center w-full">
                             <div className="w-12 h-12 rounded-2xl bg-maincolor/10 text-maincolor flex items-center justify-center mb-5 border border-maincolor/20">
                                 <Mail className="w-6 h-6" />
                             </div>
@@ -100,8 +100,8 @@ function Contact() {
                     </div>
 
                     {/* 4. Instagram Profile */}
-                    <div className="bg-white border border-pink-500/20 rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col justify-between">
-                        <div>
+                    <div className="bg-white border border-pink-500/20 rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col justify-between items-center text-center">
+                        <div className="flex flex-col items-center text-center w-full">
                             <div className="w-12 h-12 rounded-2xl bg-pink-500/10 text-pink-600 flex items-center justify-center mb-5 border border-pink-500/20">
                                 <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                     <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
@@ -131,8 +131,8 @@ function Contact() {
                     </div>
 
                     {/* 5. Facebook Page */}
-                    <div className="bg-white border border-blue-500/20 rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col justify-between">
-                        <div>
+                    <div className="bg-white border border-blue-500/20 rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col justify-between items-center text-center">
+                        <div className="flex flex-col items-center text-center w-full">
                             <div className="w-12 h-12 rounded-2xl bg-blue-500/10 text-blue-600 flex items-center justify-center mb-5 border border-blue-500/20">
                                 <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
@@ -158,8 +158,8 @@ function Contact() {
                     </div>
 
                     {/* 6. Branch 1 (Mokattam) */}
-                    <div className="bg-white border border-rose-500/20 rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col justify-between">
-                        <div>
+                    <div className="bg-white border border-rose-500/20 rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col justify-between items-center text-center">
+                        <div className="flex flex-col items-center text-center w-full">
                             <div className="w-12 h-12 rounded-2xl bg-rose-500/10 text-rose-500 flex items-center justify-center mb-5 border border-rose-500/20">
                                 <MapPin className="w-6 h-6" />
                             </div>
@@ -181,8 +181,8 @@ function Contact() {
                     </div>
 
                     {/* 7. Branch 2 (Gezira Institute) */}
-                    <div className="bg-white border border-sky-500/20 rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col justify-between">
-                        <div>
+                    <div className="bg-white border border-sky-500/20 rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col justify-between items-center text-center">
+                        <div className="flex flex-col items-center text-center w-full">
                             <div className="w-12 h-12 rounded-2xl bg-sky-500/10 text-sky-500 flex items-center justify-center mb-5 border border-sky-500/20">
                                 <MapPin className="w-6 h-6" />
                             </div>
