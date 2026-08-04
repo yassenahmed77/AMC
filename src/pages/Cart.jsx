@@ -62,7 +62,15 @@ function Cart() {
                                     
                                     {/* Image */}
                                     <div className="w-24 h-24 bg-white p-2 rounded-xl border border-slate-100 flex items-center justify-center shadow-inner shrink-0 overflow-hidden">
-                                        <img src={item.main_image} alt={item.name} className="max-w-full max-h-full object-contain" />
+                                        <img 
+                                            src={item.main_image || item.image || item.images?.[0] || '/logo.png'} 
+                                            alt={item.name} 
+                                            className="max-w-full max-h-full object-contain" 
+                                            onError={(e) => {
+                                                e.currentTarget.onerror = null;
+                                                e.currentTarget.src = '/logo.png';
+                                            }}
+                                        />
                                     </div>
                                     
                                     {/* Info */}

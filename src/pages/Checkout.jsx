@@ -393,7 +393,15 @@ function Checkout() {
                                 <div key={item.id} className="flex gap-4 items-center justify-between">
                                     <div className="flex items-center gap-3 min-w-0">
                                         <div className="w-12 h-12 bg-white rounded-lg border border-slate-100 p-1 flex items-center justify-center shrink-0">
-                                            <img src={item.main_image} alt={item.name} className="max-w-full max-h-full object-contain" />
+                                            <img 
+                                                src={item.main_image || item.image || item.images?.[0] || '/logo.png'} 
+                                                alt={item.name} 
+                                                className="max-w-full max-h-full object-contain" 
+                                                onError={(e) => {
+                                                    e.currentTarget.onerror = null;
+                                                    e.currentTarget.src = '/logo.png';
+                                                }}
+                                            />
                                         </div>
                                         <div className="flex-grow min-w-0">
                                             <h4 className="font-bold text-slate-800 text-sm truncate uppercase">{item.name}</h4>

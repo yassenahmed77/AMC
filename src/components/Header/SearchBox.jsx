@@ -188,7 +188,7 @@ function SearchBox({ searchBarOpen, setSearchBarOpen }) {
 
                                         <div className="flex items-center gap-3 shrink-0">
                                             <span className="text-slate-800 text-xs font-black font-mono">
-                                                {product.price ? `${product.price.toLocaleString()} EGP` : 'السعر قابل للتفاوض'}
+                                                {product.price ? `${product.price.toLocaleString()} EGP` : 'استفسر عن السعر'}
                                             </span>
                                             <div className="w-8 h-8 rounded-xl bg-slate-100 group-hover:bg-maincolor group-hover:text-white text-slate-500 flex items-center justify-center transition-all duration-200">
                                                 <ArrowRight size={14} />
