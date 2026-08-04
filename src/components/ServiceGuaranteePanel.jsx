@@ -10,8 +10,7 @@ function ServiceGuaranteePanel() {
                 <div>
                     <h4 className="text-sm font-extrabold uppercase tracking-tight text-white mb-1">Working Hours</h4>
                     <p className="text-slate-400 text-xs leading-relaxed font-medium">
-                        Sunday – Thursday: 9:00 AM – 8:00 PM<br />
-                        Friday & Saturday: Available for urgent setups
+                        Saturday – Thursday: 9:00 AM – 5:00 PM
                     </p>
                 </div>
             </div>

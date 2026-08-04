@@ -21,8 +21,8 @@ function Footer() {
 
             <div className="container relative z-10 space-y-8 sm:space-y-10 px-4 sm:px-6">
                 
-                {/* Top Section: Brand Story & Navigation Columns (Original 12-Col Desktop, Responsive Mobile/Tablet) */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-10 items-start">
+                {/* Top Section: Brand Story & Navigation Columns (Desktop 3-Equal Grid, Responsive Mobile/Tablet) */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-8 items-start">
                     
                     {/* Brand Column (Col 1-5 on Desktop) */}
                     <div className="sm:col-span-2 lg:col-span-5 space-y-4 flex flex-col items-center lg:items-start text-center lg:text-left">
@@ -41,8 +41,8 @@ function Footer() {
                         </p>
                     </div>
 
-                    {/* Quick Navigation Links (Col 6-8 on Desktop) */}
-                    <div className="space-y-3 sm:space-y-4 flex flex-col items-center lg:items-start lg:col-span-3 text-center lg:text-left">
+                    {/* Quick Navigation Links (Col 6-8 on Desktop, shifted right) */}
+                    <div className="space-y-3 sm:space-y-4 flex flex-col items-center lg:items-start lg:col-span-3 lg:pl-8 xl:pl-12 text-center lg:text-left">
                         <h4 className="text-xs sm:text-sm font-black uppercase tracking-widest text-primarycolor text-center lg:text-left">Quick Links</h4>
                         <ul className="space-y-2.5 sm:space-y-3 text-xs sm:text-sm font-black text-slate-300 flex flex-col items-center lg:items-start text-center lg:text-left">
                             <li className="w-full text-center lg:text-left">
@@ -68,8 +68,8 @@ function Footer() {
                         </ul>
                     </div>
 
-                    {/* Medical Categories (Col 9-12 on Desktop) */}
-                    <div className="space-y-3 sm:space-y-4 flex flex-col items-center lg:items-start lg:col-span-4 text-center lg:text-left">
+                    {/* Medical Categories (Col 9-12 on Desktop, shifted right to fill empty space) */}
+                    <div className="space-y-3 sm:space-y-4 flex flex-col items-center lg:items-start lg:col-span-4 lg:pl-8 xl:pl-12 text-center lg:text-left">
                         <h4 className="text-xs sm:text-sm font-black uppercase tracking-widest text-primarycolor text-center lg:text-left">Medical Solutions</h4>
                         <ul className="space-y-2.5 sm:space-y-3 text-xs sm:text-sm font-black text-slate-300 flex flex-col items-start text-left">
                             <li className="flex items-center justify-start gap-2">
