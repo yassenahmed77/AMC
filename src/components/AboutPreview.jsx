@@ -28,9 +28,17 @@ function AboutPreview() {
                             </h2>
                         </div>
 
-                        <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-medium">
-                            At AMC, we deliver certified, high-performance medical devices for intensive care units, clinics, emergency rooms, and home recovery. We combine quality equipment with reliable technical support.
-                        </p>
+                        <div className="space-y-3 text-slate-600 text-sm sm:text-base leading-relaxed font-medium">
+                            <p>
+                                We hope improving the quality of partner care and services. We care for our partners, presenting our experience, knowledge, and relationship to help our customers have high-standard products and services.
+                            </p>
+                            <p>
+                                We provide them with the best services and best after-sale support. To do this, as a medical provider, we get the best medical equipment we can to provide medical solutions for practitioners and patients.
+                            </p>
+                            <p className="font-bold text-slate-700 italic border-l-2 border-maincolor pl-3 py-0.5">
+                                "We listen and understand the needs of today to expect the needs of the future — hoping all of you a good, healthy life."
+                            </p>
+                        </div>
 
                         {/* Bullet Highlights */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 py-2 w-full">
