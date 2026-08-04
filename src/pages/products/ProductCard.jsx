@@ -17,35 +17,36 @@ function ProductCard({ product }) {
     };
 
     return (
-        <div className={`group bg-white border rounded-2xl p-4 shadow-sm hover:shadow-xl transition-shadow duration-300 flex flex-col h-full relative overflow-hidden ${
-            isMaxReached ? 'border-amber-200 shadow-amber-50/50' : 'border-slate-100'
+        <div className={`group bg-white border rounded-2xl p-4 shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)] hover:border-slate-300 transition-all duration-300 flex flex-col h-full relative overflow-hidden ${
+            isMaxReached ? 'border-amber-300' : 'border-slate-200/80'
         }`}>
             {/* Stock Status Badges */}
-            <div className="absolute top-4 left-4 z-10 flex gap-2">
+            <div className="absolute top-3.5 left-3.5 z-10 flex gap-2">
                 {isOutOfStock ? (
-                    <span className="px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wide uppercase bg-rose-50 text-rose-600 border border-rose-100 shadow-sm">
-                        Sold Out
+                    <span className="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-slate-100 text-slate-600 border border-slate-200">
+                        Out of Stock
                     </span>
                 ) : (
-                    <span className="px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wide uppercase bg-emerald-50 text-emerald-600 border border-emerald-100 shadow-sm">
+                    <span className="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200/80 flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
                         In Stock
                     </span>
                 )}
 
                 {isMaxReached && (
-                    <span className="px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wide uppercase bg-amber-50 text-amber-700 border border-amber-200 shadow-sm animate-pulse flex items-center gap-1">
-                        <AlertTriangle className="w-3 h-3" />
+                    <span className="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-amber-50 text-amber-800 border border-amber-200 flex items-center gap-1">
+                        <AlertTriangle className="w-3 h-3 text-amber-600" />
                         Max Added
                     </span>
                 )}
             </div>
 
             {/* Product Image Wrapper */}
-            <Link to={`/products/${product.id}`} className="w-full aspect-[4/3] bg-white rounded-xl overflow-hidden mb-4 flex items-center justify-center p-4">
+            <Link to={`/products/${product.id}`} className="w-full aspect-[4/3] bg-slate-50/50 rounded-xl overflow-hidden mb-4 flex items-center justify-center p-4 border border-slate-100 group-hover:bg-white transition-colors">
                 <img 
                     src={product.main_image || '/logo.png'} 
                     alt={`${product.name} - AMC Medical Equipment Cairo Egypt`} 
-                    className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500 ease-out"
+                    className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-300 ease-out"
                     loading="lazy"
                     width={300}
                     height={225}
@@ -58,24 +59,24 @@ function ProductCard({ product }) {
 
             {/* Product Title */}
             <Link to={`/products/${product.id}`}>
-                <h3 className="text-slate-800 font-bold text-lg leading-snug group-hover:text-maincolor transition-colors duration-200 line-clamp-1 mb-2">
+                <h3 className="text-slate-900 font-bold text-base leading-snug group-hover:text-maincolor transition-colors duration-200 line-clamp-1 mb-1.5">
                     {product.name}
                 </h3>
             </Link>
 
             {/* Product Description snippet */}
-            <p className="text-slate-500 text-sm line-clamp-2 leading-relaxed mb-4 flex-grow">
+            <p className="text-slate-500 text-xs leading-relaxed line-clamp-2 mb-4 flex-grow font-normal">
                 {product.description}
             </p>
 
             {/* Footer section: Price & Action buttons */}
-            <div className="mt-auto pt-3 border-t border-slate-50 flex flex-col gap-3">
-                <div className="flex justify-between items-baseline">
-                    <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Price</span>
+            <div className="mt-auto pt-3 border-t border-slate-100 flex flex-col gap-3">
+                <div className="flex justify-between items-center min-h-[32px]">
+                    <span className="text-[11px] text-slate-400 font-semibold uppercase tracking-wide">Price</span>
                     {product.price ? (
                         <div className="flex items-baseline gap-1">
-                            <span className="text-xl font-black text-maincolor">{product.price.toLocaleString()}</span>
-                            <span className="text-xs font-bold text-maincolor">EGP</span>
+                            <span className="text-lg font-bold text-slate-900">{product.price.toLocaleString()}</span>
+                            <span className="text-xs font-semibold text-slate-500">EGP</span>
                         </div>
                     ) : (
                         <a 
@@ -83,7 +84,7 @@ function ProductCard({ product }) {
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={(e) => e.stopPropagation()}
-                            className="inline-flex items-center gap-1.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-xs font-extrabold px-2.5 py-1 rounded-xl border border-emerald-200/80 transition-all duration-200 hover:scale-105 shadow-sm"
+                            className="inline-flex items-center gap-1.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 text-xs font-semibold px-2.5 py-1 rounded-lg border border-emerald-200 transition-colors"
                             title="إستفسر عن السعر على الواتساب"
                         >
                             <MessageCircle className="w-3.5 h-3.5 text-emerald-600" />
@@ -96,18 +97,18 @@ function ProductCard({ product }) {
                     <button 
                         onClick={handleAddToCart}
                         disabled={isOutOfStock || isMaxReached}
-                        className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-xs font-bold transition-all duration-300 ${
+                        className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-xs font-semibold transition-all ${
                             isOutOfStock 
-                                ? 'bg-slate-100 text-slate-400 cursor-not-allowed'
+                                ? 'bg-slate-100 text-slate-400 cursor-not-allowed border border-slate-200'
                                 : isMaxReached
-                                ? 'bg-amber-50/50 text-amber-700 border border-amber-200/60 cursor-not-allowed'
-                                : 'bg-transparent text-maincolor border-2 border-maincolor hover:bg-maincolor hover:text-white cursor-pointer'
+                                ? 'bg-amber-50 text-amber-800 border border-amber-200 cursor-not-allowed'
+                                : 'bg-maincolor hover:bg-blue-700 text-white font-bold cursor-pointer shadow-sm active:scale-95'
                         }`}
                     >
                         <ShoppingCart className="w-3.5 h-3.5" />
                         <span>
                             {isOutOfStock 
-                                ? 'Sold Out' 
+                                ? 'Out of Stock' 
                                 : isMaxReached 
                                 ? 'Max Added' 
                                 : 'Add to Cart'}
@@ -117,10 +118,10 @@ function ProductCard({ product }) {
                     <a 
                         href="tel:01122199076"
                         onClick={(e) => e.stopPropagation()}
-                        className="flex items-center justify-center gap-1 bg-emerald-500 hover:bg-emerald-600 text-white px-3 py-2.5 rounded-xl text-xs font-bold transition-all duration-300 shadow-sm shadow-emerald-500/20 shrink-0"
+                        className="flex items-center justify-center gap-1 bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-2.5 rounded-xl text-xs font-semibold transition-colors border border-slate-200 shrink-0"
                         title="Call Us Now"
                     >
-                        <Phone className="w-3.5 h-3.5" />
+                        <Phone className="w-3.5 h-3.5 text-slate-600" />
                         <span>Call</span>
                     </a>
                 </div>

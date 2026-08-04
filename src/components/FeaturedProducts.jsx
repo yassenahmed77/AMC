@@ -30,12 +30,15 @@ function FeaturedProducts() {
         <section className="py-20 bg-white">
             <div className="container">
                 <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
-                    <div className="text-center sm:text-left space-y-3">
-                        <h2 className="text-4xl sm:text-5xl font-black bg-gradient-to-r from-maincolor to-blue-600 bg-clip-text text-transparent tracking-tight leading-none">
-                            Our Best Products
+                    <div className="text-center sm:text-left space-y-2">
+                        <span className="text-xs font-bold uppercase tracking-wider text-maincolor bg-blue-50 px-3 py-1 rounded-md inline-block border border-blue-100/80 mb-1">
+                            Medical Supplies & Devices
+                        </span>
+                        <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
+                            Featured Products
                         </h2>
-                        <p className="text-slate-500 text-sm sm:text-base font-semibold max-w-lg leading-relaxed">
-                            Discover our top-rated medical devices and cutting-edge healthcare equipment.
+                        <p className="text-slate-500 text-sm font-normal max-w-lg leading-relaxed">
+                            Certified, high-performance medical devices trusted by clinics, hospitals, and homecare patients.
                         </p>
                     </div>
 
