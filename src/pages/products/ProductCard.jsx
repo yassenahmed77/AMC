@@ -1,5 +1,5 @@
 import { Link } from 'react-router';
-import { Eye, ShoppingCart, AlertTriangle, Phone } from 'lucide-react';
+import { ShoppingCart, AlertTriangle, Phone, MessageCircle } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 
 function ProductCard({ product }) {
@@ -78,9 +78,17 @@ function ProductCard({ product }) {
                             <span className="text-xs font-bold text-maincolor">EGP</span>
                         </div>
                     ) : (
-                        <span className="text-sm font-extrabold text-maincolor bg-blue-50 px-2.5 py-0.5 rounded-lg border border-blue-100">
-                            السعر قابل للتفاوض
-                        </span>
+                        <a 
+                            href={`https://wa.me/201005183039?text=${encodeURIComponent(`السلام عليكم، حابب أستفسر عن سعر جهاز: ${product.name}${product.main_image ? `\nصورة الجهاز: ${product.main_image}` : ''}`)}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className="inline-flex items-center gap-1.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-xs font-extrabold px-2.5 py-1 rounded-xl border border-emerald-200/80 transition-all duration-200 hover:scale-105 shadow-sm"
+                            title="إستفسر عن السعر على الواتساب"
+                        >
+                            <MessageCircle className="w-3.5 h-3.5 text-emerald-600" />
+                            <span>استفسر عن السعر</span>
+                        </a>
                     )}
                 </div>
 

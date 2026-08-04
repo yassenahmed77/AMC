@@ -4,7 +4,7 @@ import { useParams, Link } from 'react-router';
 import { supabase } from '../../lib/supabase';
 import { useCart } from '../../context/CartContext';
 import SEO from '../../components/SEO';
-import { AlertCircle, ShoppingCart, Activity, AlertTriangle, Minus, Plus, Phone, MessageSquare } from 'lucide-react';
+import { AlertCircle, ShoppingCart, Activity, AlertTriangle, Minus, Plus, Phone, MessageSquare, MessageCircle } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 async function fetchProductById(productId) {
@@ -149,12 +149,18 @@ function ProductsDetails() {
                                         <span className="text-sm font-bold text-maincolor">EGP</span>
                                     </div>
                                 ) : (
-                                    <div>
-                                        <span className="text-xl sm:text-2xl font-black text-maincolor inline-block bg-blue-50 px-3 py-1 rounded-xl border border-blue-100">
-                                            السعر قابل للتفاوض
-                                        </span>
-                                        <span className="text-xs font-bold text-slate-500 block mt-1">
-                                            تواصل معنا هاتفياً أو عبر الواتساب لمعرفة تفاصيل السعر
+                                    <div className="space-y-1.5">
+                                        <a 
+                                            href={`https://wa.me/201005183039?text=${encodeURIComponent(`السلام عليكم، حابب أستفسر عن سعر جهاز: ${product.name}${product.main_image ? `\nصورة الجهاز: ${product.main_image}` : ''}`)}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white text-xs sm:text-sm font-black px-4 py-2 rounded-xl shadow-md shadow-emerald-500/20 transition-all duration-200 hover:scale-105"
+                                        >
+                                            <MessageCircle className="w-4 h-4" />
+                                            <span>استفسر عن السعر على الواتساب</span>
+                                        </a>
+                                        <span className="text-xs font-bold text-slate-500 block">
+                                            تواصل معنا مباشرة عبر الواتساب لمعرفة السعر والتفاصيل
                                         </span>
                                     </div>
                                 )}
