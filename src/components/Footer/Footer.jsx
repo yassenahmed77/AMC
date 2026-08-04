@@ -21,8 +21,8 @@ function Footer() {
 
             <div className="container relative z-10 space-y-8 sm:space-y-10 px-4 sm:px-6">
                 
-                {/* Top Section: Brand Story & Navigation Columns (Desktop 3-Equal Grid, Responsive Mobile/Tablet) */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-8 items-start">
+                {/* Top Section: Brand Story & Navigation Columns (Aligned Responsive Grid) */}
+                <div className="lg:pl-13 xl:pl-25 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-8 items-start">
                     
                     {/* Brand Column (Col 1-5 on Desktop) */}
                     <div className="sm:col-span-2 lg:col-span-5 space-y-4 flex flex-col items-center lg:items-start text-center lg:text-left">
@@ -41,7 +41,7 @@ function Footer() {
                         </p>
                     </div>
 
-                    {/* Quick Navigation Links (Col 6-8 on Desktop, shifted right) */}
+                    {/* Quick Navigation Links */}
                     <div className="space-y-3 sm:space-y-4 flex flex-col items-center lg:items-start lg:col-span-3 lg:pl-8 xl:pl-12 text-center lg:text-left">
                         <h4 className="text-xs sm:text-sm font-black uppercase tracking-widest text-primarycolor text-center lg:text-left">Quick Links</h4>
                         <ul className="space-y-2.5 sm:space-y-3 text-xs sm:text-sm font-black text-slate-300 flex flex-col items-center lg:items-start text-center lg:text-left">
@@ -56,7 +56,7 @@ function Footer() {
                                 </Link>
                             </li>
                             <li className="w-full text-center lg:text-left">
-                                <Link to="/products" onClick={scrollToTop} className="hover:text-white transition-colors inline-flex items-center justify-center lg:justify-start gap-1">
+                                <Link to="/products" onClick={scrollToTop} className="hover:text-white transition-colors inline-flex items-center justify-start gap-1">
                                     <span>Products</span>
                                 </Link>
                             </li>
@@ -68,10 +68,10 @@ function Footer() {
                         </ul>
                     </div>
 
-                    {/* Medical Categories (Col 9-12 on Desktop, shifted right to fill empty space) */}
+                    {/* Medical Categories */}
                     <div className="space-y-3 sm:space-y-4 flex flex-col items-center lg:items-start lg:col-span-4 lg:pl-8 xl:pl-12 text-center lg:text-left">
-                        <h4 className="text-xs sm:text-sm font-black uppercase tracking-widest text-primarycolor text-center lg:text-left">Medical Solutions</h4>
-                        <ul className="space-y-2.5 sm:space-y-3 text-xs sm:text-sm font-black text-slate-300 flex flex-col items-start text-left">
+                        <h4 className="text-xs sm:text-sm font-black uppercase tracking-widest text-primarycolor text-center lg:text-left pl-3.5 lg:pl-0">Medical Solutions</h4>
+                        <ul className="space-y-2.5 sm:space-y-3 text-xs sm:text-sm font-black text-slate-300 flex flex-col items-start text-left pl-3.5 lg:pl-0">
                             <li className="flex items-center justify-start gap-2">
                                 <span className="w-2 h-2 rounded-full bg-maincolor shrink-0"></span>
                                 <span>Respiratory & Oxygen</span>
@@ -90,7 +90,6 @@ function Footer() {
                             </li>
                         </ul>
                     </div>
-
                 </div>
 
                 {/* Dedicated Centered Contact Bar - Icons Only */}
@@ -125,6 +124,36 @@ function Footer() {
                         className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-slate-800 hover:bg-maincolor text-maincolor hover:text-white flex items-center justify-center border border-slate-700/60 shadow-sm transition-all duration-300 hover:scale-110 group cursor-pointer"
                     >
                         <Mail size={18} className="group-hover:-translate-y-0.5 transition-transform duration-300" />
+                    </a>
+
+                    {/* Instagram */}
+                    <a 
+                        href="https://www.instagram.com/amcmedicalsolutions?igsh=MmxodjF0bWZ6b3Yw"
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        title="Instagram: @amcmedicalsolutions"
+                        aria-label="Instagram Page"
+                        className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-slate-800 hover:bg-pink-600 text-pink-500 hover:text-white flex items-center justify-center border border-slate-700/60 shadow-sm transition-all duration-300 hover:scale-110 group cursor-pointer"
+                    >
+                        <svg className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                        </svg>
+                    </a>
+
+                    {/* Facebook */}
+                    <a 
+                        href="https://www.facebook.com/share/1BxikcFQFo/?mibextid=wwXIfr" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        title="Facebook: AMC Medical Solutions"
+                        aria-label="Facebook Page"
+                        className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-slate-800 hover:bg-blue-600 text-blue-500 hover:text-white flex items-center justify-center border border-slate-700/60 shadow-sm transition-all duration-300 hover:scale-110 group cursor-pointer"
+                    >
+                        <svg className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                        </svg>
                     </a>
 
                     {/* Branch 1 Location (Mokattam - Rose/Red Accent) */}
