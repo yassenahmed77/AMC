@@ -16,17 +16,14 @@ function Contact() {
     const facebookUrl = "https://www.facebook.com/share/1BxikcFQFo/?mibextid=wwXIfr";
 
     return (
-        <section className="py-12 sm:py-20 min-h-screen bg-slate-50/50">
+        <section className="py-12 sm:py-20 min-h-screen bg-slate-50">
             <div className="container">
                 {/* Header Banner */}
                 <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
-                    <span className="text-xs font-black uppercase tracking-widest text-maincolor bg-maincolor/10 px-3.5 py-1.5 rounded-full inline-block mb-3 border border-maincolor/20">
-                        Contact Us
-                    </span>
-                    <h1 className="text-3xl sm:text-4xl font-black text-slate-800 tracking-tight uppercase leading-tight">
+                    <h1 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight uppercase leading-tight">
                         Get In Touch With AMC Medical
                     </h1>
-                    <p className="text-slate-500 text-sm mt-3 font-medium leading-relaxed">
+                    <p className="text-slate-600 text-sm mt-3 font-medium leading-relaxed">
                         Have questions about device specifications, pricing, or fast delivery across Egypt? Reach out to us directly via phone, WhatsApp, email, or social channels.
                     </p>
                 </div>
@@ -35,9 +32,9 @@ function Contact() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
                     
                     {/* 1. Phone Call */}
-                    <div className="bg-white border border-maincolor/15 rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col justify-between items-center text-center">
+                    <div className="bg-white border border-slate-200/80 hover:border-maincolor/30 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between items-center text-center">
                         <div className="flex flex-col items-center text-center w-full">
-                            <div className="w-12 h-12 rounded-2xl bg-maincolor/10 text-maincolor flex items-center justify-center mb-5 border border-maincolor/20">
+                            <div className="w-12 h-12 rounded-xl bg-maincolor/10 text-maincolor flex items-center justify-center mb-5 border border-maincolor/15">
                                 <Phone className="w-6 h-6" />
                             </div>
                             <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest mb-1">Direct Phone</h3>
@@ -56,9 +53,9 @@ function Contact() {
                     </div>
 
                     {/* 2. WhatsApp Direct Chat */}
-                    <div className="bg-white border border-emerald-500/20 rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col justify-between items-center text-center">
+                    <div className="bg-white border border-slate-200/80 hover:border-emerald-500/30 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between items-center text-center">
                         <div className="flex flex-col items-center text-center w-full">
-                            <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center mb-5 border border-emerald-500/20">
+                            <div className="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center mb-5 border border-emerald-500/20">
                                 <MessageCircle className="w-6 h-6" />
                             </div>
                             <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest mb-1">WhatsApp Chat</h3>
@@ -71,7 +68,7 @@ function Contact() {
                             href={`https://wa.me/${whatsappClean}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="w-full inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-black py-3 rounded-xl text-xs uppercase tracking-wider shadow-md shadow-emerald-500/10 transition-colors duration-200"
+                            className="w-full inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-black py-3 rounded-xl text-xs uppercase tracking-wider transition-colors duration-200"
                         >
                             <MessageCircle size={14} />
                             <span>Chat on WhatsApp</span>
@@ -79,9 +76,9 @@ function Contact() {
                     </div>
 
                     {/* 3. Official Email */}
-                    <div className="bg-white border border-maincolor/15 rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col justify-between items-center text-center">
+                    <div className="bg-white border border-slate-200/80 hover:border-slate-400 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between items-center text-center">
                         <div className="flex flex-col items-center text-center w-full">
-                            <div className="w-12 h-12 rounded-2xl bg-maincolor/10 text-maincolor flex items-center justify-center mb-5 border border-maincolor/20">
+                            <div className="w-12 h-12 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center mb-5 border border-slate-200">
                                 <Mail className="w-6 h-6" />
                             </div>
                             <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest mb-1">Official Email</h3>
@@ -92,7 +89,7 @@ function Contact() {
                         </div>
                         <a 
                             href={`mailto:${email}`}
-                            className="w-full inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 rounded-xl text-xs uppercase tracking-wider transition-colors duration-200"
+                            className="w-full inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 rounded-xl text-xs uppercase tracking-wider transition-colors duration-200"
                         >
                             <Mail size={14} />
                             <span>Send Email</span>
@@ -100,9 +97,9 @@ function Contact() {
                     </div>
 
                     {/* 4. Instagram Profile */}
-                    <div className="bg-white border border-pink-500/20 rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col justify-between items-center text-center">
+                    <div className="bg-white border border-slate-200/80 hover:border-pink-500/30 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between items-center text-center">
                         <div className="flex flex-col items-center text-center w-full">
-                            <div className="w-12 h-12 rounded-2xl bg-pink-500/10 text-pink-600 flex items-center justify-center mb-5 border border-pink-500/20">
+                            <div className="w-12 h-12 rounded-xl bg-pink-50 text-pink-600 flex items-center justify-center mb-5 border border-pink-100">
                                 <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                     <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
                                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
@@ -119,7 +116,7 @@ function Contact() {
                             href={instagramUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-pink-500 hover:opacity-90 text-white font-black py-3 rounded-xl text-xs uppercase tracking-wider shadow-md shadow-pink-500/10 transition-opacity duration-200"
+                            className="w-full inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-white font-black py-3 rounded-xl text-xs uppercase tracking-wider transition-colors duration-200"
                         >
                             <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                 <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
@@ -131,9 +128,9 @@ function Contact() {
                     </div>
 
                     {/* 5. Facebook Page */}
-                    <div className="bg-white border border-blue-500/20 rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col justify-between items-center text-center">
+                    <div className="bg-white border border-slate-200/80 hover:border-blue-500/30 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between items-center text-center">
                         <div className="flex flex-col items-center text-center w-full">
-                            <div className="w-12 h-12 rounded-2xl bg-blue-500/10 text-blue-600 flex items-center justify-center mb-5 border border-blue-500/20">
+                            <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-5 border border-blue-100">
                                 <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
                                 </svg>
@@ -148,7 +145,7 @@ function Contact() {
                             href={facebookUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="w-full inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-black py-3 rounded-xl text-xs uppercase tracking-wider shadow-md shadow-blue-600/10 transition-colors duration-200"
+                            className="w-full inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-white font-black py-3 rounded-xl text-xs uppercase tracking-wider transition-colors duration-200"
                         >
                             <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                 <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
@@ -158,9 +155,9 @@ function Contact() {
                     </div>
 
                     {/* 6. Branch 1 (Mokattam) */}
-                    <div className="bg-white border border-rose-500/20 rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col justify-between items-center text-center">
+                    <div className="bg-white border border-slate-200/80 hover:border-slate-300 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between items-center text-center">
                         <div className="flex flex-col items-center text-center w-full">
-                            <div className="w-12 h-12 rounded-2xl bg-rose-500/10 text-rose-500 flex items-center justify-center mb-5 border border-rose-500/20">
+                            <div className="w-12 h-12 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center mb-5 border border-slate-200">
                                 <MapPin className="w-6 h-6" />
                             </div>
                             <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest mb-1">Branch 1 (Mokattam)</h3>
@@ -173,7 +170,7 @@ function Contact() {
                             href={address1Map}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="w-full inline-flex items-center justify-center gap-2 bg-rose-500 hover:bg-rose-600 text-white font-black py-3 rounded-xl text-xs uppercase tracking-wider shadow-md shadow-rose-500/10 transition-colors duration-200"
+                            className="w-full inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-white font-black py-3 rounded-xl text-xs uppercase tracking-wider transition-colors duration-200"
                         >
                             <MapPin size={14} />
                             <span>Open Mokattam Map</span>
@@ -181,9 +178,9 @@ function Contact() {
                     </div>
 
                     {/* 7. Branch 2 (Gezira Institute) */}
-                    <div className="bg-white border border-sky-500/20 rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col justify-between items-center text-center">
+                    <div className="bg-white border border-slate-200/80 hover:border-slate-300 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between items-center text-center">
                         <div className="flex flex-col items-center text-center w-full">
-                            <div className="w-12 h-12 rounded-2xl bg-sky-500/10 text-sky-500 flex items-center justify-center mb-5 border border-sky-500/20">
+                            <div className="w-12 h-12 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center mb-5 border border-slate-200">
                                 <MapPin className="w-6 h-6" />
                             </div>
                             <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest mb-1">Branch 2 (Gezira Institute)</h3>
@@ -196,7 +193,7 @@ function Contact() {
                             href={address2Map}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="w-full inline-flex items-center justify-center gap-2 bg-sky-500 hover:bg-sky-600 text-white font-black py-3 rounded-xl text-xs uppercase tracking-wider shadow-md shadow-sky-500/10 transition-colors duration-200"
+                            className="w-full inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-white font-black py-3 rounded-xl text-xs uppercase tracking-wider transition-colors duration-200"
                         >
                             <MapPin size={14} />
                             <span>Open Gezira Map</span>
