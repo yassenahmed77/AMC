@@ -59,13 +59,7 @@ function FeaturedProducts() {
                     </div>
                 ) : featured.length === 0 ? (
                     <div className="text-center py-12 bg-slate-50 rounded-2xl border border-slate-100 max-w-md mx-auto">
-                        <p className="text-slate-500 font-bold mb-4">No products available in the database yet.</p>
-                        <Link 
-                            to="/admin" 
-                            className="text-xs font-bold bg-maincolor text-white px-4 py-2 rounded-xl"
-                        >
-                            Add First Product (Admin)
-                        </Link>
+                        <p className="text-slate-500 font-bold">No products available at the moment.</p>
                     </div>
                 ) : (
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
