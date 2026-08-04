@@ -102,8 +102,8 @@ function ProductsDetails() {
                                 className="max-w-full max-h-full object-contain hover:scale-105 transition-transform duration-300" 
                             />
                             {activeImage !== product.main_image && (
-                                <span className="absolute bottom-3 right-3 bg-slate-900 text-white text-[11px] font-semibold px-2.5 py-1 rounded-md shadow-sm">
-                                    Real Photo
+                                <span className="absolute bottom-4 right-4 bg-emerald-500 text-white text-[10px] font-black tracking-wider uppercase px-2.5 py-1 rounded-full shadow-md animate-pulse">
+                                    Real Life Photo
                                 </span>
                             )}
                         </div>
