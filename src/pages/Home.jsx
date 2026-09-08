@@ -1,5 +1,5 @@
 import Landing from '../components/Header/Landing';
-import TrustFeatures from '../components/TrustFeatures';
+import CorkboardTrust from '../components/CorkboardTrust';
 import FeaturedProducts from '../components/FeaturedProducts';
 import AboutPreview from '../components/AboutPreview';
 import CTASection from '../components/CTASection';
@@ -11,7 +11,7 @@ function Home() {
             <Landing />
             
             <ScrollReveal variant="fade-up" id="reveal_trust">
-                <TrustFeatures />
+                <CorkboardTrust />
             </ScrollReveal>
 
             <ScrollReveal variant="fade-up" id="reveal_featured">

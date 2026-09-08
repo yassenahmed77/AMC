@@ -42,13 +42,6 @@ function Landing() {
                             <span className="w-2.5 h-2.5 rounded-full bg-primarycolor animate-pulse" />
                             <span>Trusted Medical Care</span>
                         </div>
-
-                        {/* Welcome Row with Icon */}
-                        <div className="flex items-center justify-center lg:justify-start gap-2 text-primarycolor font-extrabold tracking-wide uppercase text-sm sm:text-base">
-                            <span>Welcome to</span>
-                            <HeartPulse className="w-5 h-5 animate-pulse" />
-                        </div>
-
                         {/* Mixed Colors and Gradient Title */}
                         <h1 className="tracking-tight leading-none text-center lg:text-left">
                             <span className="text-6xl sm:text-7xl lg:text-8xl font-black text-white block">AMC</span>
@@ -84,7 +77,7 @@ function Landing() {
 
                     {/* Right Column: Smaller space for counter (flex-[2_2_0%] on desktop, centered on mobile) */}
                     <div className="flex-1 lg:flex-[2_2_0%] flex justify-center lg:justify-end items-center w-full">
-                        <div className="backdrop-blur-md bg-white/10 border border-white/20 p-6 sm:p-8 rounded-2xl shadow-xl flex flex-col items-center text-center  space-y-2 hover:bg-white/15 transition-all duration-300 w-full lg:w-auto max-w-[280px] lg:max-w-none">
+                        <div className="backdrop-blur-md bg-white/10 border border-white/20 p-6 sm:p-8 rounded-2xl shadow-xl flex flex-col items-center text-center space-y-2 hover:bg-white/15 transition-all duration-300 w-full lg:w-auto max-w-[280px] lg:max-w-none">
                             <span className="text-5xl sm:text-7xl font-black text-primarycolor tracking-tight">+{count}</span>
                             <p className="text-white text-base sm:text-lg font-bold tracking-wide max-w-[220px] leading-snug">Doctors & Hospitals Trusted Us</p>
                             <p className="text-white/60 text-xs sm:text-sm font-semibold">New & Premium Used Devices</p>

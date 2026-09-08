@@ -9,9 +9,9 @@ function About() {
                 
                 {/* Header Banner */}
                 <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
-                    <span className="text-xs font-black uppercase tracking-widest text-maincolor bg-maincolor/10 px-3.5 py-1.5 rounded-full inline-block mb-3 border border-maincolor/20">
+                    {/* <span className="text-xs font-black uppercase tracking-widest text-maincolor bg-maincolor/10 px-3.5 py-1.5 rounded-full inline-block mb-3 border border-maincolor/20">
                         About Us
-                    </span>
+                    </span> */}
                     <h1 className="text-3xl sm:text-4xl font-black text-slate-800 tracking-tight uppercase leading-tight">
                         About AMC Medical Equipment
                     </h1>

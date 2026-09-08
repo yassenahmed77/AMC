@@ -17,4 +17,76 @@
   .container{
     @apply mx-auto px-4 md:px-10 lg:px-20
   }
+
+  /* Corkboard & Wood Texture Styles */
+  .corkboard-bg {
+    background-color: #c98e54;
+    background-image: 
+      radial-gradient(rgba(120, 65, 20, 0.25) 1px, transparent 0),
+      radial-gradient(rgba(255, 220, 170, 0.3) 1px, transparent 0),
+      radial-gradient(rgba(90, 45, 10, 0.15) 2px, transparent 0);
+    background-size: 24px 24px, 36px 36px, 48px 48px;
+    background-position: 0 0, 12px 12px, 24px 24px;
+    box-shadow: inset 0 0 80px rgba(45, 20, 5, 0.6), inset 0 0 20px rgba(0, 0, 0, 0.4);
+  }
+
+  .wood-frame {
+    border: 14px solid #4a2711;
+    border-image: linear-gradient(to bottom right, #633517, #3b1e0d, #522c14, #2d1609) 1;
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5), inset 0 4px 12px rgba(0, 0, 0, 0.6);
+  }
+
+  .pin-shadow {
+    filter: drop-shadow(3px 8px 5px rgba(0, 0, 0, 0.45));
+  }
+
+  .tape-overlay {
+    background: rgba(255, 255, 255, 0.55);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    backdrop-filter: blur(1px);
+    border-left: 1px dashed rgba(255, 255, 255, 0.8);
+    border-right: 1px dashed rgba(255, 255, 255, 0.8);
+  }
+
+  .polaroid-card {
+    box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.3), 0 2px 6px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .polaroid-card:hover {
+    box-shadow: 0 22px 40px -10px rgba(0, 0, 0, 0.45), 0 6px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Animated Glowing Orange Cracks */
+  @keyframes orangeGlowPulse {
+    0%, 100% {
+      opacity: 0.6;
+      filter: drop-shadow(0 0 4px #ff9d19) drop-shadow(0 0 12px #ff9d19);
+      stroke-dashoffset: 0;
+    }
+    50% {
+      opacity: 1;
+      filter: drop-shadow(0 0 10px #ff9d19) drop-shadow(0 0 22px #ff9d19);
+      stroke-dashoffset: 40;
+    }
+  }
+
+  .crack-glow-path {
+    stroke-dasharray: 25 15;
+    animation: orangeGlowPulse 4s ease-in-out infinite;
+  }
+
+  .crack-glow-path-reverse {
+    stroke-dasharray: 20 12;
+    animation: orangeGlowPulse 5s ease-in-out infinite reverse;
+  }
+
+  /* Light wall texture background for section */
+  .light-wall-bg {
+    background-color: #f8fafc;
+    background-image: 
+      radial-gradient(circle at 50% 50%, rgba(255, 157, 25, 0.08) 0%, transparent 60%),
+      radial-gradient(#e2e8f0 1px, transparent 1px);
+    background-size: 100% 100%, 28px 28px;
+  }
 }
