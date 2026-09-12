@@ -300,14 +300,14 @@ function ProductsManager() {
     return (
         <div>
             {/* Header controls */}
-            <div className="flex flex-col sm:flex-row justify-between items-center sm:items-center text-center sm:text-left border-b border-slate-200 pb-6 mb-8 gap-4">
+            <div className="flex flex-col sm:flex-row justify-between items-center sm:items-center text-center sm:text-left border-b border-white/10 pb-6 mb-8 gap-4">
                 <div>
-                    <h2 className="text-2xl font-black text-slate-800 tracking-tight uppercase">Products Inventory</h2>
-                    <p className="text-slate-500 text-sm mt-1">Manage active listings, upload compressed devices images, and edit stock quantities</p>
+                    <h2 className="text-2xl font-black text-white tracking-tight uppercase">Products Inventory</h2>
+                    <p className="text-slate-400 text-sm mt-1">Manage active listings, upload compressed devices images, and edit stock quantities</p>
                 </div>
                 <button 
                     onClick={handleOpenAdd}
-                    className="inline-flex items-center justify-center gap-2 bg-maincolor text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-md shadow-maincolor/10 hover:scale-[1.02] active:scale-100 transition-all cursor-pointer w-full sm:w-auto"
+                    className="inline-flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-5 py-2.5 rounded-xl text-sm font-black uppercase tracking-wider shadow-lg shadow-cyan-500/25 hover:scale-[1.02] active:scale-100 transition-all cursor-pointer w-full sm:w-auto"
                 >
                     <Plus size={16} />
                     <span>Add New Product</span>
@@ -317,14 +317,14 @@ function ProductsManager() {
             {/* Content list */}
             {loading ? (
                 <div className="flex flex-col items-center justify-center py-20">
-                    <RefreshCw className="w-10 h-10 text-maincolor animate-spin mb-4" />
-                    <p className="text-slate-500 font-bold text-sm">Loading products...</p>
+                    <RefreshCw className="w-10 h-10 text-cyan-400 animate-spin mb-4" />
+                    <p className="text-slate-400 font-bold text-sm">Loading products...</p>
                 </div>
             ) : products.length === 0 ? (
-                <div className="text-center py-20 bg-white border border-slate-100 rounded-3xl p-8 max-w-md mx-auto shadow-sm">
-                    <Package className="w-12 h-12 text-slate-350 mx-auto mb-4" />
-                    <h3 className="text-lg font-bold text-slate-800 mb-1">Inventory is Empty</h3>
-                    <p className="text-slate-500 text-sm">No products found in the database. Click "Add New Product" to start.</p>
+                <div className="text-center py-20 bg-slate-900/80 border border-white/10 rounded-3xl p-8 max-w-md mx-auto shadow-2xl">
+                    <Package className="w-12 h-12 text-slate-600 mx-auto mb-4" />
+                    <h3 className="text-lg font-bold text-white mb-1">Inventory is Empty</h3>
+                    <p className="text-slate-400 text-sm">No products found in the database. Click "Add New Product" to start.</p>
                 </div>
             ) : (
                 /* Products Table / Cards */
@@ -336,35 +336,35 @@ function ProductsManager() {
                         return (
                             <div 
                                 key={product.id} 
-                                className={`group bg-white border rounded-2xl p-5 shadow-sm hover:shadow-lg transition-shadow duration-300 ease-out flex flex-col justify-between ${
+                                className={`group bg-slate-900/75 backdrop-blur-xl border rounded-2xl p-5 shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 ease-out flex flex-col justify-between ${
                                     isOutOfStock 
-                                        ? 'border-rose-100 bg-rose-50/5' 
+                                        ? 'border-rose-500/30 bg-rose-950/15' 
                                         : isLowStock 
-                                        ? 'border-amber-100 bg-amber-50/5' 
-                                        : 'border-slate-100'
+                                        ? 'border-amber-500/30 bg-amber-950/15' 
+                                        : 'border-white/10 hover:border-cyan-500/30'
                                 }`}
                             >
                                 <div className="space-y-4">
                                     {/* Image and status badge row */}
                                     <div className="flex justify-between items-start gap-4">
-                                        <div className="w-16 h-16 bg-white p-2 rounded-xl border border-slate-100 flex items-center justify-center shrink-0 overflow-hidden shadow-inner">
+                                        <div className="w-16 h-16 bg-slate-950/90 p-2 rounded-xl border border-white/10 flex items-center justify-center shrink-0 overflow-hidden shadow-inner">
                                             {product.main_image ? (
                                                 <img src={product.main_image} alt={product.name} className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-300 ease-out" />
                                             ) : (
-                                                <Package className="text-slate-300 w-8 h-8" />
+                                                <Package className="text-slate-600 w-8 h-8" />
                                             )}
                                         </div>
                                         <div className="flex flex-col items-end gap-1">
                                             <span className={`px-2.5 py-1 rounded-full text-[9px] font-black uppercase tracking-wider ${
                                                 isOutOfStock 
-                                                    ? 'bg-rose-50 text-rose-600 border border-rose-100'
+                                                    ? 'bg-rose-500/10 text-rose-400 border border-rose-500/30'
                                                     : isLowStock 
-                                                    ? 'bg-amber-50 text-amber-600 border border-amber-100 animate-pulse'
-                                                    : 'bg-emerald-50 text-emerald-600 border border-emerald-100'
+                                                    ? 'bg-amber-500/10 text-amber-400 border border-amber-500/30 animate-pulse'
+                                                    : 'bg-cyan-500/10 text-cyan-400 border border-cyan-500/30'
                                             }`}>
                                                 {isOutOfStock ? 'Sold Out' : isLowStock ? 'Low Stock' : 'In Stock'}
                                             </span>
-                                            <span className="text-slate-800 text-xs font-bold font-mono">
+                                            <span className="text-cyan-400 text-xs font-bold font-mono">
                                                 {product.price ? `${product.price.toLocaleString()} EGP` : 'السعر قابل للتفاوض'}
                                             </span>
                                         </div>
@@ -372,27 +372,27 @@ function ProductsManager() {
 
                                     {/* Name and description snippet */}
                                     <div>
-                                        <h4 className="font-extrabold text-slate-800 text-base uppercase leading-snug line-clamp-1 group-hover:text-maincolor transition-colors duration-200">{product.name}</h4>
+                                        <h4 className="font-extrabold text-white text-base uppercase leading-snug line-clamp-1 group-hover:text-cyan-400 transition-colors duration-200">{product.name}</h4>
                                         <p className="text-slate-400 text-xs line-clamp-2 mt-1 font-medium">{product.description || 'No description provided.'}</p>
                                     </div>
 
                                     {/* Quick Quantity Actions */}
-                                    <div className="bg-slate-50/80 border border-slate-100 rounded-xl p-3 flex justify-between items-center">
-                                        <span className="text-[10px] text-slate-500 font-extrabold uppercase tracking-wide">Stock Quantity</span>
+                                    <div className="bg-slate-950/70 border border-white/10 rounded-xl p-3 flex justify-between items-center">
+                                        <span className="text-[10px] text-slate-400 font-extrabold uppercase tracking-wide">Stock Quantity</span>
                                         <div className="flex items-center gap-3">
                                             <button 
                                                 onClick={() => handleQuickQuantityUpdate(product.id, product.quantity || 0, -1)}
                                                 disabled={actionLoadingId === product.id}
-                                                className="text-slate-400 hover:text-rose-500 hover:scale-110 active:scale-95 disabled:opacity-50 transition-all duration-200 cursor-pointer"
+                                                className="text-slate-400 hover:text-rose-400 hover:scale-110 active:scale-95 disabled:opacity-50 transition-all duration-200 cursor-pointer"
                                                 title="Decrease stock"
                                             >
                                                 <MinusCircle size={20} />
                                             </button>
-                                            <span className="text-sm font-black text-slate-800 w-6 text-center">{product.quantity ?? 0}</span>
+                                            <span className="text-sm font-black text-white w-6 text-center font-mono">{product.quantity ?? 0}</span>
                                             <button 
                                                 onClick={() => handleQuickQuantityUpdate(product.id, product.quantity || 0, 1)}
                                                 disabled={actionLoadingId === product.id}
-                                                className="text-slate-400 hover:text-emerald-500 hover:scale-110 active:scale-95 disabled:opacity-50 transition-all duration-200 cursor-pointer"
+                                                className="text-slate-400 hover:text-cyan-400 hover:scale-110 active:scale-95 disabled:opacity-50 transition-all duration-200 cursor-pointer"
                                                 title="Increase stock"
                                             >
                                                 <PlusCircle size={20} />
@@ -402,11 +402,11 @@ function ProductsManager() {
                                 </div>
 
                                 {/* Item Actions */}
-                                <div className="flex gap-2 mt-5 pt-4 border-t border-slate-50">
+                                <div className="flex gap-2 mt-5 pt-4 border-t border-white/10">
                                     <button 
                                         onClick={() => requestDeleteProduct(product)}
                                         disabled={actionLoadingId !== null}
-                                        className="flex-1 border border-rose-100 bg-rose-50/50 text-rose-600 hover:bg-rose-500 hover:text-white py-2 rounded-xl text-xs font-black transition-all duration-300 cursor-pointer flex items-center justify-center gap-1.5"
+                                        className="flex-1 border border-rose-500/30 bg-rose-500/10 text-rose-400 hover:bg-rose-500 hover:text-white py-2 rounded-xl text-xs font-black transition-all duration-300 cursor-pointer flex items-center justify-center gap-1.5"
                                     >
                                         <Trash2 size={13} />
                                         <span>Delete</span>
@@ -414,7 +414,7 @@ function ProductsManager() {
                                     <button 
                                         onClick={() => handleOpenEdit(product)}
                                         disabled={actionLoadingId !== null}
-                                        className="flex-1 bg-slate-50 hover:bg-maincolor hover:text-white text-slate-700 py-2 rounded-xl text-xs font-bold transition-all duration-300 cursor-pointer flex items-center justify-center gap-1.5"
+                                        className="flex-1 bg-slate-800/80 hover:bg-cyan-500 hover:text-slate-950 text-slate-200 border border-white/10 py-2 rounded-xl text-xs font-bold transition-all duration-300 cursor-pointer flex items-center justify-center gap-1.5"
                                     >
                                         <Pencil size={13} />
                                         <span>Edit Details</span>
@@ -428,56 +428,56 @@ function ProductsManager() {
 
             {/* Full Screen Form Modal */}
             {isFormOpen && (
-                <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
-                    <div className="bg-white rounded-3xl border border-slate-100 p-6 sm:p-8 shadow-2xl max-w-2xl w-full my-8 max-h-[90vh] overflow-y-auto relative">
+                <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto animate-fadeIn">
+                    <div className="bg-slate-900/95 backdrop-blur-2xl rounded-3xl border border-white/10 p-6 sm:p-8 shadow-2xl max-w-2xl w-full my-8 max-h-[90vh] overflow-y-auto relative custom-scrollbar">
                         {/* Close button */}
                         <button 
                             onClick={() => setIsFormOpen(false)}
-                            className="absolute top-4 right-4 text-slate-400 hover:text-slate-700 transition-colors cursor-pointer"
+                            className="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors cursor-pointer"
                         >
                             <X size={20} />
                         </button>
 
-                        <h3 className="text-xl font-black text-slate-800 uppercase tracking-tight mb-1">
+                        <h3 className="text-xl font-black text-white uppercase tracking-tight mb-1">
                             {editingProduct ? 'Edit Product Details' : 'Add New Product Listing'}
                         </h3>
-                        <p className="text-slate-400 text-xs font-bold uppercase tracking-wider mb-6 border-b border-slate-100 pb-4">
+                        <p className="text-slate-400 text-xs font-bold uppercase tracking-wider mb-6 border-b border-white/10 pb-4">
                             All image files uploaded are compressed to .webp automatically
                         </p>
 
                         <form onSubmit={handleFormSubmit} className="flex flex-col gap-5">
                             {/* Product Name */}
                             <div className="flex flex-col gap-1.5">
-                                <label className="text-xs font-bold text-slate-700 uppercase">Product Name <span className="text-rose-500">*</span></label>
+                                <label className="text-xs font-bold text-slate-300 uppercase">Product Name <span className="text-rose-500">*</span></label>
                                 <input 
                                     type="text" 
                                     required
                                     value={formData.name}
                                     onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
                                     placeholder="e.g. Oxygen Concentrator 5L"
-                                    className="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50/50 text-slate-800 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-maincolor/10 focus:border-maincolor"
+                                    className="w-full px-4 py-2.5 rounded-xl border border-white/15 bg-slate-950/70 text-white placeholder-slate-500 text-sm font-semibold focus:outline-none focus:border-cyan-400"
                                 />
                             </div>
 
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 {/* Price */}
                                 <div className="flex flex-col gap-1.5">
-                                    <label className="text-xs font-bold text-slate-700 uppercase flex items-center justify-between">
+                                    <label className="text-xs font-bold text-slate-300 uppercase flex items-center justify-between">
                                         <span>Price (EGP)</span>
-                                        <span className="text-slate-400 text-[10px] font-medium lowercase">(اختياري)</span>
+                                        <span className="text-slate-500 text-[10px] font-medium lowercase">(اختياري)</span>
                                     </label>
                                     <input 
                                         type="number" 
                                         value={formData.price}
                                         onChange={(e) => setFormData(prev => ({ ...prev, price: e.target.value }))}
                                         placeholder="اتركه فارغاً ليكون السعر قابل للتفاوض"
-                                        className="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50/50 text-slate-800 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-maincolor/10 focus:border-maincolor"
+                                        className="w-full px-4 py-2.5 rounded-xl border border-white/15 bg-slate-950/70 text-white placeholder-slate-500 text-sm font-semibold focus:outline-none focus:border-cyan-400"
                                     />
                                 </div>
 
                                 {/* Stock Quantity */}
                                 <div className="flex flex-col gap-1.5">
-                                    <label className="text-xs font-bold text-slate-700 uppercase">Initial Stock Quantity <span className="text-rose-500">*</span></label>
+                                    <label className="text-xs font-bold text-slate-300 uppercase">Initial Stock Quantity <span className="text-rose-500">*</span></label>
                                     <input 
                                         type="number" 
                                         required
@@ -485,32 +485,32 @@ function ProductsManager() {
                                         value={formData.quantity}
                                         onChange={(e) => setFormData(prev => ({ ...prev, quantity: parseInt(e.target.value) || 0 }))}
                                         placeholder="e.g. 5"
-                                        className="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50/50 text-slate-800 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-maincolor/10 focus:border-maincolor"
+                                        className="w-full px-4 py-2.5 rounded-xl border border-white/15 bg-slate-950/70 text-white placeholder-slate-500 text-sm font-semibold focus:outline-none focus:border-cyan-400"
                                     />
                                 </div>
                             </div>
 
                             {/* Description */}
                             <div className="flex flex-col gap-1.5">
-                                <label className="text-xs font-bold text-slate-700 uppercase">Description</label>
+                                <label className="text-xs font-bold text-slate-300 uppercase">Description</label>
                                 <textarea 
                                     rows={4}
                                     value={formData.description}
                                     onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
                                     placeholder="Enter complete technical specifications, condition, brand, features..."
-                                    className="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50/50 text-slate-800 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-maincolor/10 focus:border-maincolor"
+                                    className="w-full px-4 py-2.5 rounded-xl border border-white/15 bg-slate-950/70 text-white placeholder-slate-500 text-sm font-semibold focus:outline-none focus:border-cyan-400"
                                 />
                             </div>
 
                             {/* Main Image Upload */}
                             <div className="flex flex-col gap-2">
-                                <label className="text-xs font-bold text-slate-700 uppercase">Main Product Image <span className="text-rose-500">*</span></label>
-                                <div className="flex flex-col sm:flex-row items-center gap-4 border border-dashed border-slate-200 rounded-2xl p-4 bg-slate-50/50">
-                                    <div className="w-20 h-20 bg-white p-2 rounded-xl border border-slate-100 flex items-center justify-center shrink-0 overflow-hidden shadow-inner">
+                                <label className="text-xs font-bold text-slate-300 uppercase">Main Product Image <span className="text-rose-500">*</span></label>
+                                <div className="flex flex-col sm:flex-row items-center gap-4 border border-dashed border-white/15 rounded-2xl p-4 bg-slate-950/50">
+                                    <div className="w-20 h-20 bg-slate-950 p-2 rounded-xl border border-white/10 flex items-center justify-center shrink-0 overflow-hidden shadow-inner">
                                         {formData.main_image ? (
                                             <img src={formData.main_image} alt="Preview" className="max-w-full max-h-full object-contain" />
                                         ) : (
-                                            <Upload className="text-slate-350 w-6 h-6" />
+                                            <Upload className="text-slate-600 w-6 h-6" />
                                         )}
                                     </div>
                                     <div className="flex-grow w-full text-center sm:text-left">
@@ -524,22 +524,22 @@ function ProductsManager() {
                                         />
                                         <label 
                                             htmlFor="main-image-file-input"
-                                            className="inline-flex items-center gap-2 bg-white border border-slate-200 px-4 py-2 rounded-xl text-xs font-black uppercase text-slate-700 shadow-sm cursor-pointer hover:bg-slate-50 active:scale-95 transition-all"
+                                            className="inline-flex items-center gap-2 bg-slate-800 border border-white/15 px-4 py-2 rounded-xl text-xs font-black uppercase text-slate-200 shadow-sm cursor-pointer hover:bg-slate-700 hover:text-white active:scale-95 transition-all"
                                         >
                                             {uploadingImage ? 'Processing...' : 'Upload & Compress'}
                                         </label>
-                                        <p className="text-[10px] text-slate-400 mt-2 font-bold uppercase">Webp compression happens client side automatically</p>
+                                        <p className="text-[10px] text-slate-500 mt-2 font-bold uppercase">Webp compression happens client side automatically</p>
                                     </div>
                                 </div>
                             </div>
 
                             {/* Gallery Images Upload */}
                             <div className="flex flex-col gap-2">
-                                <label className="text-xs font-bold text-slate-700 uppercase">Real Life Gallery Images <span className="text-slate-400 font-medium normal-case">(Optional - displayed f details slider)</span></label>
-                                <div className="border border-dashed border-slate-200 rounded-2xl p-4 bg-slate-50/50 flex flex-col gap-4">
+                                <label className="text-xs font-bold text-slate-300 uppercase">Real Life Gallery Images <span className="text-slate-500 font-medium normal-case">(Optional - displayed f details slider)</span></label>
+                                <div className="border border-dashed border-white/15 rounded-2xl p-4 bg-slate-950/50 flex flex-col gap-4">
                                     <div className="flex flex-wrap gap-3">
                                         {formData.images?.map((url, idx) => (
-                                            <div key={idx} className="relative w-16 h-16 bg-white p-1 rounded-xl border border-slate-150 flex items-center justify-center overflow-hidden group">
+                                            <div key={idx} className="relative w-16 h-16 bg-slate-950 p-1 rounded-xl border border-white/10 flex items-center justify-center overflow-hidden group">
                                                 <img src={url} alt="Gallery Preview" className="max-w-full max-h-full object-contain" />
                                                 <button 
                                                     type="button"
@@ -563,7 +563,7 @@ function ProductsManager() {
                                         />
                                         <label 
                                             htmlFor="gallery-images-file-input"
-                                            className="inline-flex items-center gap-2 bg-white border border-slate-200 px-4 py-2 rounded-xl text-xs font-black uppercase text-slate-700 shadow-sm cursor-pointer hover:bg-slate-50 active:scale-95 transition-all"
+                                            className="inline-flex items-center gap-2 bg-slate-800 border border-white/15 px-4 py-2 rounded-xl text-xs font-black uppercase text-slate-200 shadow-sm cursor-pointer hover:bg-slate-700 hover:text-white active:scale-95 transition-all"
                                         >
                                             {uploadingImage ? 'Processing...' : 'Upload Gallery Photos'}
                                         </label>
@@ -572,18 +572,18 @@ function ProductsManager() {
                             </div>
 
                             {/* Submit Panel */}
-                            <div className="flex gap-3 justify-end border-t border-slate-100 pt-5 mt-3">
+                            <div className="flex gap-3 justify-end border-t border-white/10 pt-5 mt-3">
                                 <button
                                     type="button"
                                     onClick={() => setIsFormOpen(false)}
-                                    className="px-5 py-2.5 rounded-xl text-xs font-bold text-slate-500 hover:bg-slate-50 transition-colors cursor-pointer"
+                                    className="px-5 py-2.5 rounded-xl text-xs font-bold text-slate-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
                                 >
                                     Cancel
                                 </button>
                                 <button
                                     type="submit"
                                     disabled={actionLoadingId !== null || uploadingImage}
-                                    className="bg-maincolor text-white px-6 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider shadow-md shadow-maincolor/10 hover:scale-[1.02] active:scale-100 transition-all cursor-pointer disabled:opacity-50"
+                                    className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-6 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider shadow-lg shadow-cyan-500/25 hover:scale-[1.02] active:scale-100 transition-all cursor-pointer disabled:opacity-50"
                                 >
                                     {actionLoadingId === 'submit_form' ? 'Saving Listing...' : editingProduct ? 'Save Product' : 'Add Product'}
                                 </button>

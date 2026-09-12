@@ -25,27 +25,27 @@ function Products() {
     });
 
     return (
-        <section className="py-12 bg-slate-50/50 min-h-screen">
+        <section className="py-12 bg-transparent min-h-screen">
             <div className="container">
                 {/* Header */}
                 <div className="mb-10 text-center lg:text-left">
-                    <h1 className="text-3xl sm:text-5xl font-black text-slate-800 tracking-tight mb-3">
+                    <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight mb-3">
                         Medical Equipment Store
                     </h1>
-                    <p className="text-slate-500 text-sm sm:text-base font-medium max-w-2xl">
+                    <p className="text-slate-400 text-sm sm:text-base font-medium max-w-2xl">
                         Discover our comprehensive inventory of premium medical devices trusted by healthcare professionals.
                     </p>
                 </div>
 
                 {/* Error State */}
                 {isError && (
-                    <div className="text-center py-16 bg-white border border-slate-100 rounded-3xl p-8 max-w-md mx-auto shadow-sm">
+                    <div className="text-center py-16 bg-slate-900/80 backdrop-blur-xl border border-white/10 rounded-3xl p-8 max-w-md mx-auto shadow-2xl">
                         <AlertCircle className="w-12 h-12 text-rose-500 mx-auto mb-4" />
-                        <h3 className="text-lg font-bold text-slate-800 mb-1">Failed to Load Products</h3>
-                        <p className="text-slate-500 text-sm mb-6">{error?.message || 'Error occurred.'}</p>
+                        <h3 className="text-lg font-bold text-white mb-1">Failed to Load Products</h3>
+                        <p className="text-slate-400 text-sm mb-6">{error?.message || 'Error occurred.'}</p>
                         <button 
                             onClick={() => refetch()}
-                            className="inline-flex items-center gap-2 bg-maincolor text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-md hover:scale-[1.02] active:scale-100 transition-all cursor-pointer"
+                            className="inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-5 py-2.5 rounded-xl text-sm font-bold shadow-md shadow-cyan-500/20 hover:scale-[1.02] active:scale-100 transition-all cursor-pointer"
                         >
                             <RefreshCw className="w-4 h-4" />
                             <span>Try Again</span>

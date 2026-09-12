@@ -87,43 +87,43 @@ function CustomersManager() {
         <div className="space-y-8">
             
             {/* Header & Stats Banner - Centered on Mobile */}
-            <div className="flex flex-col md:flex-row items-center justify-between text-center md:text-left gap-6 bg-white p-6 rounded-3xl border border-slate-100 shadow-sm">
+            <div className="flex flex-col md:flex-row items-center justify-between text-center md:text-left gap-6 bg-slate-900/75 backdrop-blur-xl p-6 rounded-3xl border border-white/10 shadow-xl">
                 <div className="flex flex-col items-center md:items-start text-center md:text-left">
                     <div className="flex items-center justify-center md:justify-start gap-2 mb-1">
-                        <Users className="w-5 h-5 text-maincolor shrink-0" />
-                        <h2 className="text-lg sm:text-2xl font-black text-slate-800 uppercase tracking-tight">
+                        <Users className="w-5 h-5 text-cyan-400 shrink-0" />
+                        <h2 className="text-lg sm:text-2xl font-black text-white uppercase tracking-tight">
                             Customer CRM Directory
                         </h2>
                     </div>
-                    <p className="text-slate-500 text-xs sm:text-sm font-medium max-w-lg">
+                    <p className="text-slate-400 text-xs sm:text-sm font-medium max-w-lg">
                         Unique client contacts aggregated from all store orders for quick WhatsApp & phone outreach.
                     </p>
                 </div>
 
                 {/* Counter Badges - Inline Icons right next to numbers */}
                 <div className="flex flex-wrap items-center justify-center md:justify-end gap-3 shrink-0 w-full md:w-auto">
-                    <div className="bg-slate-50 border border-slate-200/60 px-4 py-2 rounded-2xl text-center w-full sm:w-auto">
+                    <div className="bg-slate-950/80 border border-white/10 px-4 py-2 rounded-2xl text-center w-full sm:w-auto">
                         <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-0.5">Total Clients</span>
-                        <div className="flex items-center justify-center gap-1.5 font-mono font-black text-base text-slate-800">
-                            <Users className="w-4 h-4 text-maincolor shrink-0" />
+                        <div className="flex items-center justify-center gap-1.5 font-mono font-black text-base text-white">
+                            <Users className="w-4 h-4 text-cyan-400 shrink-0" />
                             <span>{totalClientsCount}</span>
                         </div>
                     </div>
 
-                    <div className="bg-emerald-50 border border-emerald-100 px-4 py-2 rounded-2xl text-center w-full sm:w-auto">
-                        <span className="text-[10px] font-bold text-emerald-700 uppercase tracking-wider block mb-0.5">Total Lifetime Spent</span>
-                        <div className="flex items-center justify-center gap-1.5 font-mono font-black text-base text-emerald-700">
-                            <DollarSign className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <div className="bg-slate-950/80 border border-cyan-500/30 px-4 py-2 rounded-2xl text-center w-full sm:w-auto">
+                        <span className="text-[10px] font-bold text-cyan-400 uppercase tracking-wider block mb-0.5">Total Lifetime Spent</span>
+                        <div className="flex items-center justify-center gap-1.5 font-mono font-black text-base text-cyan-400">
+                            <DollarSign className="w-4 h-4 text-cyan-400 shrink-0" />
                             <span>{grandTotalRevenue.toLocaleString()} EGP</span>
                         </div>
                     </div>
 
                     <button 
                         onClick={fetchCustomers}
-                        className="p-3 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-2xl transition-colors cursor-pointer flex items-center justify-center"
+                        className="p-3 bg-slate-800/80 hover:bg-slate-700 text-white rounded-2xl transition-colors cursor-pointer flex items-center justify-center border border-white/10"
                         title="Refresh Directory"
                     >
-                        <RefreshCw size={16} className={loading ? 'animate-spin' : ''} />
+                        <RefreshCw size={16} className={loading ? 'animate-spin text-cyan-400' : 'text-cyan-400'} />
                     </button>
                 </div>
             </div>
@@ -136,12 +136,12 @@ function CustomersManager() {
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search by customer name, phone, or governorate..."
-                    className="w-full pl-11 pr-10 py-3 bg-white border border-slate-200 rounded-2xl text-xs font-bold text-slate-800 placeholder-slate-400 focus:outline-none focus:border-maincolor shadow-sm transition-all"
+                    className="w-full pl-11 pr-10 py-3 bg-slate-950/70 border border-white/15 rounded-2xl text-xs font-bold text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 shadow-sm transition-all"
                 />
                 {searchQuery && (
                     <button 
                         onClick={() => setSearchQuery('')}
-                        className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-slate-600 font-bold"
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-white font-bold cursor-pointer"
                     >
                         Clear
                     </button>
@@ -152,18 +152,18 @@ function CustomersManager() {
             {loading ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {[...Array(6)].map((_, i) => (
-                        <div key={i} className="bg-white rounded-3xl p-6 border border-slate-100 animate-pulse space-y-4 text-center">
-                            <div className="h-5 bg-slate-100 rounded w-1/2 mx-auto"></div>
-                            <div className="h-4 bg-slate-100 rounded w-3/4 mx-auto"></div>
-                            <div className="h-10 bg-slate-100 rounded w-full"></div>
+                        <div key={i} className="bg-slate-900/60 rounded-3xl p-6 border border-white/10 animate-pulse space-y-4 text-center">
+                            <div className="h-5 bg-slate-800 rounded w-1/2 mx-auto"></div>
+                            <div className="h-4 bg-slate-800 rounded w-3/4 mx-auto"></div>
+                            <div className="h-10 bg-slate-800 rounded w-full"></div>
                         </div>
                     ))}
                 </div>
             ) : filteredCustomers.length === 0 ? (
-                <div className="text-center py-16 bg-white border border-slate-100 rounded-3xl p-8 max-w-md mx-auto shadow-sm">
-                    <Users className="w-12 h-12 text-slate-300 mx-auto mb-4" />
-                    <h3 className="text-lg font-bold text-slate-800 mb-1">No Customers Found</h3>
-                    <p className="text-slate-500 text-xs font-medium">
+                <div className="text-center py-16 bg-slate-900/80 border border-white/10 rounded-3xl p-8 max-w-md mx-auto shadow-2xl">
+                    <Users className="w-12 h-12 text-slate-600 mx-auto mb-4" />
+                    <h3 className="text-lg font-bold text-white mb-1">No Customers Found</h3>
+                    <p className="text-slate-400 text-xs font-medium">
                         {searchQuery ? "No matching clients found for your search." : "Customer directory will populate automatically when orders are placed."}
                     </p>
                 </div>
@@ -175,52 +175,52 @@ function CustomersManager() {
 
                         return (
                             <div 
-                                key={idx}
-                                className="bg-white border border-slate-100 rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col justify-between"
+                                key={idx} 
+                                className="bg-slate-900/75 backdrop-blur-xl border border-white/10 hover:border-cyan-500/30 rounded-3xl p-6 shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 flex flex-col justify-between"
                             >
                                 <div className="space-y-4">
                                     {/* Name & Clinic */}
                                     <div className="flex justify-between items-start gap-2">
                                         <div>
-                                            <h3 className="text-base font-black text-slate-800 leading-snug">
+                                            <h3 className="text-base font-black text-white leading-snug">
                                                 {cust.name}
                                             </h3>
                                             {cust.clinic && (
-                                                <div className="flex items-center gap-1 text-xs font-bold text-maincolor mt-1">
+                                                <div className="flex items-center gap-1 text-xs font-bold text-cyan-400 mt-1">
                                                     <Building2 size={13} />
                                                     <span>{cust.clinic}</span>
                                                 </div>
                                             )}
                                         </div>
 
-                                        <span className="text-[10px] font-black uppercase tracking-wider bg-maincolor/10 text-maincolor px-2.5 py-1 rounded-full border border-maincolor/20 shrink-0">
+                                        <span className="text-[10px] font-black uppercase tracking-wider bg-cyan-500/10 text-cyan-400 px-2.5 py-1 rounded-full border border-cyan-500/30 shrink-0 font-mono">
                                             {cust.ordersCount} {cust.ordersCount === 1 ? 'Order' : 'Orders'}
                                         </span>
                                     </div>
 
                                     {/* Address & Location(s) - Smart Deduplicated Display */}
-                                    <div className="space-y-2 text-xs font-medium text-slate-600 bg-slate-50/70 p-3 rounded-2xl border border-slate-100">
+                                    <div className="space-y-2 text-xs font-medium text-slate-300 bg-slate-950/70 p-3 rounded-2xl border border-white/10">
                                         {cust.addresses.length <= 1 ? (
                                             <div className="flex items-start gap-2">
-                                                <MapPin size={14} className="text-primarycolor shrink-0 mt-0.5" />
+                                                <MapPin size={14} className="text-cyan-400 shrink-0 mt-0.5" />
                                                 <span>
-                                                    <strong className="font-bold text-slate-700">{cust.addresses[0]?.governorate || 'N/A'}:</strong> {cust.addresses[0]?.address || 'No address provided'}
+                                                    <strong className="font-bold text-white">{cust.addresses[0]?.governorate || 'N/A'}:</strong> {cust.addresses[0]?.address || 'No address provided'}
                                                 </span>
                                             </div>
                                         ) : (
                                             <div className="space-y-2">
-                                                <div className="flex items-center justify-between text-[11px] font-black text-slate-700 uppercase tracking-wider">
-                                                    <span className="flex items-center gap-1.5 text-maincolor">
-                                                        <MapPin size={14} className="text-primarycolor shrink-0" />
+                                                <div className="flex items-center justify-between text-[11px] font-black text-white uppercase tracking-wider">
+                                                    <span className="flex items-center gap-1.5 text-cyan-400">
+                                                        <MapPin size={14} className="text-cyan-400 shrink-0" />
                                                         Saved Addresses ({cust.addresses.length})
                                                     </span>
                                                 </div>
-                                                <ul className="space-y-1.5 pt-1.5 border-t border-slate-200/60 text-[11px] font-bold text-slate-600">
+                                                <ul className="space-y-1.5 pt-1.5 border-t border-white/10 text-[11px] font-bold text-slate-300">
                                                     {cust.addresses.map((addrObj, aIdx) => (
                                                         <li key={aIdx} className="flex items-start gap-1.5">
-                                                            <span className="w-1.5 h-1.5 rounded-full bg-maincolor shrink-0 mt-1.5"></span>
+                                                            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0 mt-1.5"></span>
                                                             <span>
-                                                                <strong className="font-extrabold text-slate-800">{addrObj.governorate}:</strong> {addrObj.address}
+                                                                <strong className="font-extrabold text-white">{addrObj.governorate}:</strong> {addrObj.address}
                                                             </span>
                                                         </li>
                                                     ))}
@@ -230,15 +230,15 @@ function CustomersManager() {
                                     </div>
 
                                     {/* Lifetime Spent & Last Order Date - Centered */}
-                                    <div className="grid grid-cols-2 gap-2 pt-2 text-xs font-bold border-t border-slate-100 text-center">
+                                    <div className="grid grid-cols-2 gap-2 pt-2 text-xs font-bold border-t border-white/10 text-center">
                                         <div className="text-center">
                                             <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Total Spent</span>
-                                            <span className="text-sm font-black text-emerald-600 font-mono">{cust.totalSpent.toLocaleString()} EGP</span>
+                                            <span className="text-sm font-black text-cyan-400 font-mono">{cust.totalSpent.toLocaleString()} EGP</span>
                                         </div>
 
                                         <div className="text-center">
                                             <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Last Order</span>
-                                            <span className="text-[11px] font-bold text-slate-600">
+                                            <span className="text-[11px] font-bold text-slate-300 font-mono">
                                                 {new Date(cust.lastOrderDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                                             </span>
                                         </div>
@@ -249,9 +249,9 @@ function CustomersManager() {
                                 <div className="grid grid-cols-2 gap-3 pt-6">
                                     <a 
                                         href={`tel:${cleanPhone}`}
-                                        className="inline-flex items-center justify-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold py-2.5 rounded-xl text-xs uppercase tracking-wider transition-colors duration-200"
+                                        className="inline-flex items-center justify-center gap-2 bg-slate-800/80 hover:bg-slate-700 text-white font-bold py-2.5 rounded-xl text-xs uppercase tracking-wider border border-white/10 transition-colors duration-200"
                                     >
-                                        <Phone size={14} />
+                                        <Phone size={14} className="text-cyan-400" />
                                         <span>Call</span>
                                     </a>
 
@@ -259,7 +259,7 @@ function CustomersManager() {
                                         href={`https://wa.me/${whatsappClean}`}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-black py-2.5 rounded-xl text-xs uppercase tracking-wider shadow-sm shadow-emerald-500/10 transition-colors duration-200"
+                                        className="inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black py-2.5 rounded-xl text-xs uppercase tracking-wider shadow-lg shadow-emerald-500/20 transition-colors duration-200"
                                     >
                                         <MessageCircle size={14} />
                                         <span>WhatsApp</span>

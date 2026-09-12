@@ -1,94 +1,164 @@
+import { useEffect, useRef } from 'react';
 import { Link } from 'react-router';
-import { HeartPulse, ArrowRight } from 'lucide-react';
-import { useEffect, useState } from 'react';
-import bannerImg from '../../assets/banner.webp';
+import { ArrowRight, Activity } from 'lucide-react';
+import gsap from 'gsap';
+
+const descriptionText = "We provide advanced medical equipment and reliable solutions to support healthcare professionals and improve patient care.";
 
 function Landing() {
-    const [count, setCount] = useState(0);
+    const heroRef = useRef(null);
+    const words = descriptionText.split(" ");
 
-    // Counter animation to count up from 0 to 99 on load
     useEffect(() => {
-        let start = 0;
-        const end = 99;
-        if (start === end) return;
-        
-        let duration = 1200; // total animation time in ms
-        let incrementTime = Math.abs(Math.floor(duration / end));
-        
-        let timer = setInterval(() => {
-            start += 1;
-            setCount(start);
-            if (start === end) clearInterval(timer);
-        }, incrementTime);
-        
-        return () => clearInterval(timer);
+        if (!heroRef.current) return;
+
+        const ctx = gsap.context(() => {
+            const tl = gsap.timeline({ 
+                defaults: { ease: 'power3.out' },
+                delay: 0.1 
+            });
+
+            // 1. Eyebrow Badge (Appears 1st)
+            tl.fromTo(
+                '.hero-eyebrow',
+                { opacity: 0, y: -22, scale: 0.92 },
+                { opacity: 1, y: 0, scale: 1, duration: 0.5 }
+            );
+
+            // 2. Main Title - Line 1 "AMC" (Appears 2nd)
+            tl.fromTo(
+                '.hero-title-amc',
+                { opacity: 0, y: 30 },
+                { opacity: 1, y: 0, duration: 0.55 },
+                "-=0.25"
+            );
+
+            // 3. Main Title - Line 2 "Medical Solutions" (Appears 3rd)
+            tl.fromTo(
+                '.hero-title-solutions',
+                { opacity: 0, y: 30 },
+                { opacity: 1, y: 0, duration: 0.55 },
+                "-=0.35"
+            );
+
+            // 4. Byline / Signature (Appears 4th)
+            tl.fromTo(
+                '.hero-byline',
+                { opacity: 0, y: 14, scale: 0.96 },
+                { opacity: 1, y: 0, scale: 1, duration: 0.4 },
+                "-=0.2"
+            );
+
+            // 5. Description Paragraph - Words appear one after another (Appears 5th - Wahed Wra Eltany!)
+            tl.fromTo(
+                '.hero-desc-word',
+                { opacity: 0, y: 12 },
+                { 
+                    opacity: 1, 
+                    y: 0, 
+                    duration: 0.28, 
+                    stagger: 0.03 
+                },
+                "-=0.1"
+            );
+
+            // 6. Action CTA Buttons (Appear 6th right after text finishes)
+            tl.fromTo(
+                '.hero-cta-btn',
+                { opacity: 0, y: 20, scale: 0.95 },
+                { 
+                    opacity: 1, 
+                    y: 0, 
+                    scale: 1, 
+                    duration: 0.45, 
+                    stagger: 0.12,
+                    clearProps: "transform,opacity"
+                },
+                "-=0.1"
+            );
+
+            // 7. Slogan badge at bottom
+            tl.fromTo(
+                '.hero-slogan',
+                { opacity: 0, x: -20 },
+                { opacity: 1, x: 0, duration: 0.6 },
+                "-=0.2"
+            );
+        }, heroRef.current);
+
+        return () => ctx.revert();
     }, []);
 
     return (
-        // Banner Section: Preloaded bundled background image via Vite import
+        // Hero Section: Centered Sequential Text with Authentic Medical Live Background
         <section 
-            className="min-h-[calc(100vh-88px)] lg:h-[calc(100vh-120px)] py-12 lg:py-0 flex items-center justify-center bg-cover bg-center bg-no-repeat w-full text-center" 
-            style={{ backgroundImage: `url(${bannerImg})` }}
+            ref={heroRef}
+            className="relative min-h-screen pt-28 sm:pt-32 lg:pt-36 pb-16 lg:pb-24 flex items-center justify-center w-full text-center overflow-hidden bg-transparent" 
         >
-            <div className="container w-full">
-                {/* Responsive Flex Layout: Stacks & centers on mobile, splits side-by-side on desktop */}
-                <div className="flex flex-col lg:flex-row items-center justify-between gap-10 w-full">
+            <div className="container relative z-10 w-full px-4 sm:px-6">
+                <div className="max-w-4xl mx-auto flex flex-col items-center text-center space-y-7">
                     
-                    {/* Left Column: Larger space for text (flex-[3_3_0%] on desktop, centered on mobile) */}
-                    <div className="flex-1 lg:flex-[3_3_0%] flex flex-col items-center lg:items-start text-center lg:text-left space-y-6">
-                        
-                        {/* Live Pulse Badge */}
-                        <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-4 py-1.5 rounded-full text-[10px] sm:text-xs font-bold text-white uppercase tracking-wider">
-                            <span className="w-2.5 h-2.5 rounded-full bg-primarycolor animate-pulse" />
-                            <span>Trusted Medical Care</span>
-                        </div>
-                        {/* Mixed Colors and Gradient Title */}
-                        <h1 className="tracking-tight leading-none text-center lg:text-left">
-                            <span className="text-6xl sm:text-7xl lg:text-8xl font-black text-white block">AMC</span>
-                            <span className="text-3xl sm:text-5xl lg:text-6xl font-black block mt-3 bg-gradient-to-r from-primarycolor to-maincolor bg-clip-text text-transparent whitespace-nowrap">
-                                Medical Solutions
-                            </span>
-                        </h1>
 
-                        {/* Signature */}
-                        <span className="bg-gradient-to-r from-primarycolor to-white bg-clip-text text-transparent font-bold text-xs sm:text-sm tracking-widest uppercase block text-center lg:text-left">
+                    {/* 2. Main Title (AMC -> Medical Solutions) */}
+                    <h1 className="tracking-tight leading-none text-center">
+                        <span className="hero-title-amc text-6xl sm:text-7xl lg:text-8xl font-black text-white block drop-shadow-[0_10px_25px_rgba(0,0,0,0.8)]">
+                            AMC
+                        </span>
+                        <span className="hero-title-solutions text-3xl sm:text-5xl lg:text-6xl font-black block mt-3 bg-gradient-to-r from-white via-cyan-100 to-cyan-400 bg-clip-text text-transparent drop-shadow-[0_10px_20px_rgba(0,229,255,0.2)]">
+                            Medical Solutions
+                        </span>
+                    </h1>
+
+                    {/* 3. Byline / Signature */}
+                    <div className="hero-byline flex items-center justify-center gap-2">
+                        <span className="w-6 h-[1px] bg-cyan-400/50 hidden sm:inline-block"></span>
+                        <span className="text-cyan-300/90 font-bold text-xs sm:text-sm tracking-widest uppercase block text-center">
                             By: ENG Hassan elkhawaga
                         </span>
-
-                        {/* Description Paragraph */}
-                        <p className="text-slate-200 text-base sm:text-lg lg:text-xl leading-relaxed font-medium max-w-2xl mx-auto lg:mx-0">
-                            We provide advanced medical equipment and reliable solutions to support healthcare professionals and improve patient care.
-                        </p>
-
-                        {/* Premium Call to Actions */}
-                        <div className="flex gap-4 justify-center lg:justify-start pt-2">
-                            {/* Primary Button */}
-                            <Link to="/products" className="group flex items-center gap-2 bg-gradient-to-r from-primarycolor to-orange-400 text-white px-3.5 py-2 text-sm sm:px-6 sm:py-3 sm:text-base rounded-xl font-bold tracking-wide shadow-lg shadow-primarycolor/20 hover:shadow-xl hover:shadow-primarycolor/40 hover:-translate-y-1 hover:scale-105 active:translate-y-0 active:scale-100 transition-all duration-300 cursor-pointer">
-                                <span>Products</span>
-                                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1.5 transition-transform duration-300" />
-                            </Link>
-                            {/* Secondary Button */}
-                            <Link to="/contact" className="border-2 border-white/60 text-white px-3.5 py-2 text-sm sm:px-6 sm:py-3 sm:text-base rounded-xl font-bold tracking-wide backdrop-blur-sm hover:bg-white hover:text-maincolor hover:border-white hover:-translate-y-1 hover:scale-105 active:translate-y-0 active:scale-100 hover:shadow-lg hover:shadow-white/10 transition-all duration-300 cursor-pointer">
-                                Contact Us
-                            </Link>
-                        </div>
-
+                        <span className="w-6 h-[1px] bg-cyan-400/50 hidden sm:inline-block"></span>
                     </div>
 
-                    {/* Right Column: Smaller space for counter (flex-[2_2_0%] on desktop, centered on mobile) */}
-                    <div className="flex-1 lg:flex-[2_2_0%] flex justify-center lg:justify-end items-center w-full">
-                        <div className="backdrop-blur-md bg-white/10 border border-white/20 p-6 sm:p-8 rounded-2xl shadow-xl flex flex-col items-center text-center space-y-2 hover:bg-white/15 transition-all duration-300 w-full lg:w-auto max-w-[280px] lg:max-w-none">
-                            <span className="text-5xl sm:text-7xl font-black text-primarycolor tracking-tight">+{count}</span>
-                            <p className="text-white text-base sm:text-lg font-bold tracking-wide max-w-[220px] leading-snug">Doctors & Hospitals Trusted Us</p>
-                            <p className="text-white/60 text-xs sm:text-sm font-semibold">New & Premium Used Devices</p>
-                        </div>
+                    {/* 4. Description Paragraph (Every word reveals sequentially one after another) */}
+                    <p className="text-slate-200/90 text-base sm:text-lg lg:text-xl leading-relaxed font-medium max-w-2xl mx-auto text-center drop-shadow-md">
+                        {words.map((word, idx) => (
+                            <span 
+                                key={idx} 
+                                className="hero-desc-word inline-block transform-gpu"
+                            >
+                                {word}&nbsp;
+                            </span>
+                        ))}
+                    </p>
+
+                    {/* 5. Premium Call to Action Buttons */}
+                    <div className="flex flex-wrap gap-4 justify-center items-center pt-2">
+                        {/* Primary Button: Glowing Electric Cyan (matching reference banner) */}
+                        <Link 
+                            to="/products" 
+                            className="hero-cta-btn group flex items-center gap-2 bg-cyan-400 hover:bg-cyan-300 text-slate-950 px-7 py-3.5 text-sm sm:text-base rounded-2xl font-black tracking-wide shadow-xl shadow-cyan-400/30 hover:shadow-2xl hover:shadow-cyan-400/40 hover:-translate-y-1 hover:scale-105 active:translate-y-0 active:scale-100 transition-all duration-300 cursor-pointer"
+                        >
+                            <span>Products</span>
+                            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-slate-950 group-hover:translate-x-1.5 transition-transform duration-300" />
+                        </Link>
+                        {/* Secondary Button: Frost Glass Accent with Cyan Glow */}
+                        <Link 
+                            to="/contact" 
+                            className="hero-cta-btn bg-slate-950/60 hover:bg-slate-900/80 border border-cyan-500/30 hover:border-cyan-400 text-white px-7 py-3.5 text-sm sm:text-base rounded-2xl font-bold tracking-wide backdrop-blur-md hover:-translate-y-1 hover:scale-105 active:translate-y-0 active:scale-100 shadow-lg shadow-black/40 transition-all duration-300 cursor-pointer"
+                        >
+                            Contact Us
+                        </Link>
                     </div>
 
                 </div>
+            </div>
 
+            {/* Bottom Slogan matching user's reference mockup */}
+            <div className="hero-slogan hidden lg:flex items-center gap-3 absolute bottom-8 left-10 text-xs font-bold tracking-widest text-slate-300/80 uppercase pointer-events-none">
+                <span className="w-8 h-[2px] bg-cyan-400 inline-block shadow-sm shadow-cyan-400"></span>
+                <span>BETTER EQUIPMENT &nbsp;|&nbsp; HEALTHIER TOMORROW</span>
             </div>
         </section>
-    )
+    );
 }
 
 export default Landing;

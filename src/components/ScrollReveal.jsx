@@ -1,18 +1,25 @@
 import { useEffect, useRef, useState } from "react";
 
-export default function ScrollReveal({ children, className = "", variant = "fade-up", duration = "duration-1000", delay = "", threshold = 0.1, once = true }) {
+export default function ScrollReveal({ 
+  children, 
+  className = "", 
+  variant = "fade-up", 
+  duration = "duration-700", 
+  delay = 0, 
+  threshold = 0.15, 
+  once = true,
+  style = {}
+}) {
   const [isVisible, setIsVisible] = useState(false);
   const domRef = useRef(null);
 
   useEffect(() => {
-    // Tracking if element showed up
+    // Tracking if element showed up in viewport
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // If element showed up
         if (entry.isIntersecting) {
           setIsVisible(true);
           if (once) {
-            // After first show up stop tracking
             observer.unobserve(entry.target);
           }
         } else if (!once) {
@@ -22,13 +29,11 @@ export default function ScrollReveal({ children, className = "", variant = "fade
       { threshold }
     );
     
-    // Tracking current element
     const currentRef = domRef.current;
     if (currentRef) {
       observer.observe(currentRef);
     }
     
-    // Stop tracking when in unmount phase
     return () => {
       if (currentRef) {
         observer.unobserve(currentRef);
@@ -37,10 +42,10 @@ export default function ScrollReveal({ children, className = "", variant = "fade
   }, [once, threshold]);
 
   const variantStyles = {
-    "fade-up": "opacity-0 translate-y-10",
-    "fade-down": "opacity-0 -translate-y-10",
-    "fade-left": "opacity-0 translate-x-10",
-    "fade-right": "opacity-0 -translate-x-10",
+    "fade-up": "opacity-0 translate-y-8",
+    "fade-down": "opacity-0 -translate-y-8",
+    "fade-left": "opacity-0 translate-x-8",
+    "fade-right": "opacity-0 -translate-x-8",
     "zoom-in": "opacity-0 scale-95",
     "fade": "opacity-0",
   };
@@ -54,10 +59,15 @@ export default function ScrollReveal({ children, className = "", variant = "fade
     "fade": "opacity-100",
   };
 
+  // Convert numeric delay to ms style or keep string class
+  const delayStyle = typeof delay === 'number' ? { transitionDelay: `${delay}ms` } : {};
+  const delayClass = typeof delay === 'string' ? delay : '';
+
   return (
     <div
       ref={domRef}
-      className={`transition-all ${duration} ${delay} ease-out transform-gpu will-change-transform ${
+      style={{ ...delayStyle, ...style }}
+      className={`transition-all ${duration} ${delayClass} ease-out transform-gpu will-change-transform ${
         isVisible ? activeStyles[variant] : variantStyles[variant]
       } ${className}`}
     >

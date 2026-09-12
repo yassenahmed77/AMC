@@ -53,11 +53,11 @@ function AdminDashboard() {
     const triggerConfirmToast = (message, onConfirm) => {
         toast((t) => (
             <div className="flex flex-col gap-3 p-1 text-left">
-                <p className="text-sm font-bold text-slate-800 leading-relaxed">{message}</p>
+                <p className="text-sm font-bold text-white leading-relaxed">{message}</p>
                 <div className="flex justify-end gap-2">
                     <button 
                         onClick={() => toast.dismiss(t.id)}
-                        className="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-500 hover:bg-slate-100 transition-colors cursor-pointer"
+                        className="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:bg-slate-800 transition-colors cursor-pointer"
                     >
                         Discard
                     </button>
@@ -66,7 +66,7 @@ function AdminDashboard() {
                             toast.dismiss(t.id);
                             onConfirm();
                         }}
-                        className="px-3.5 py-1.5 rounded-lg text-xs font-black bg-maincolor text-white shadow-sm hover:scale-[1.02] transition-transform cursor-pointer"
+                        className="px-3.5 py-1.5 rounded-lg text-xs font-black bg-cyan-500 text-slate-950 shadow-sm hover:bg-cyan-400 transition-all cursor-pointer"
                     >
                         Confirm
                     </button>
@@ -99,9 +99,9 @@ function AdminDashboard() {
 
     if (loadingAuth) {
         return (
-            <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50/50">
-                <RefreshCw className="w-10 h-10 text-maincolor animate-spin mb-4" />
-                <p className="text-slate-500 font-bold text-sm uppercase tracking-wider">Checking Session Security...</p>
+            <div className="min-h-screen flex flex-col items-center justify-center bg-transparent">
+                <RefreshCw className="w-10 h-10 text-cyan-400 animate-spin mb-4" />
+                <p className="text-cyan-200/80 font-bold text-xs uppercase tracking-widest animate-pulse">Checking Session Security...</p>
             </div>
         );
     }
@@ -111,9 +111,9 @@ function AdminDashboard() {
     }
 
     return (
-        <section className="min-h-screen bg-slate-50/50">
+        <section className="min-h-screen bg-transparent text-slate-100">
             {/* Admin Header / Sub-navigation */}
-            <div className="bg-white border-b border-slate-100 shadow-sm sticky top-0 z-30">
+            <div className="bg-slate-950/80 backdrop-blur-xl border-b border-white/10 shadow-xl sticky top-0 z-30">
                 <div className="container py-4 flex flex-col md:flex-row justify-between items-center gap-4">
                     
                     {/* Navigation Tabs */}
@@ -122,8 +122,8 @@ function AdminDashboard() {
                             onClick={() => setActiveTab('orders')}
                             className={`flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all cursor-pointer w-full md:w-auto ${
                                 activeTab === 'orders'
-                                    ? 'bg-maincolor text-white shadow-md shadow-maincolor/20'
-                                    : 'bg-slate-50 text-slate-600 hover:bg-slate-100'
+                                    ? 'bg-cyan-500 text-slate-950 shadow-lg shadow-cyan-500/25'
+                                    : 'bg-slate-900/60 text-slate-300 hover:bg-slate-800 border border-white/10'
                             }`}
                         >
                             <ClipboardList size={15} />
@@ -134,8 +134,8 @@ function AdminDashboard() {
                             onClick={() => setActiveTab('products')}
                             className={`flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all cursor-pointer w-full md:w-auto ${
                                 activeTab === 'products'
-                                    ? 'bg-maincolor text-white shadow-md shadow-maincolor/20'
-                                    : 'bg-slate-50 text-slate-600 hover:bg-slate-100'
+                                    ? 'bg-cyan-500 text-slate-950 shadow-lg shadow-cyan-500/25'
+                                    : 'bg-slate-900/60 text-slate-300 hover:bg-slate-800 border border-white/10'
                             }`}
                         >
                             <Package size={15} />
@@ -146,8 +146,8 @@ function AdminDashboard() {
                             onClick={() => setActiveTab('customers')}
                             className={`flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all cursor-pointer w-full md:w-auto ${
                                 activeTab === 'customers'
-                                    ? 'bg-maincolor text-white shadow-md shadow-maincolor/20'
-                                    : 'bg-slate-50 text-slate-600 hover:bg-slate-100'
+                                    ? 'bg-cyan-500 text-slate-950 shadow-lg shadow-cyan-500/25'
+                                    : 'bg-slate-900/60 text-slate-300 hover:bg-slate-800 border border-white/10'
                             }`}
                         >
                             <Users size={15} />
@@ -157,14 +157,14 @@ function AdminDashboard() {
 
                     {/* Admin Meta & Logout */}
                     <div className="flex flex-col md:flex-row items-center justify-center gap-3 w-full md:w-auto mt-3 md:mt-0">
-                        <div className="flex items-center justify-center gap-2 text-slate-500 text-xs font-bold bg-slate-50 px-3.5 py-2 rounded-xl border border-slate-150 w-full md:w-auto shrink-0">
-                            <UserCheck size={14} className="text-emerald-500 text-center" />
+                        <div className="flex items-center justify-center gap-2 text-slate-300 text-xs font-bold bg-slate-900/70 px-4 py-2 rounded-xl border border-white/10 w-full md:w-auto shrink-0">
+                            <UserCheck size={14} className="text-emerald-400 text-center" />
                             <span className="truncate max-w-[200px]">{adminUser?.email}</span>
                         </div>
                         
                         <button
                             onClick={requestLogout}
-                            className="flex items-center justify-center gap-2 bg-rose-50 text-rose-600 hover:bg-rose-500 hover:text-white px-4 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 cursor-pointer shadow-sm w-full md:w-auto shrink-0"
+                            className="flex items-center justify-center gap-2 bg-rose-500/15 text-rose-400 hover:bg-rose-500 hover:text-white px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 cursor-pointer shadow-sm w-full md:w-auto shrink-0 border border-rose-500/20"
                             title="Log Out"
                         >
                             <LogOut size={15} />

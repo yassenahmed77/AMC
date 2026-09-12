@@ -28,17 +28,15 @@ function TrustedSupplierCard({
 
             {/* Key Stats Counter Grid */}
             <div className="grid grid-cols-2 gap-4 pt-6 border-t border-maincolor/20 text-center sm:text-left">
-                <div className="space-y-1 flex flex-col items-center sm:items-start">
-                    <div className="flex items-center justify-center sm:justify-start gap-2">
-                        <Award className="w-5 h-5 text-primarycolor" />
+                <div className="space-y-1 flex flex-col items-center">
+                    <div className="flex items-center justify-center gap-2">
                         <span className="text-2xl font-black font-mono text-white">{years}</span>
                     </div>
                     <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">{yearsLabel}</p>
                 </div>
 
-                <div className="space-y-1 flex flex-col items-center sm:items-start">
-                    <div className="flex items-center justify-center sm:justify-start gap-2">
-                        <Building2 className="w-5 h-5 text-emerald-400" />
+                <div className="space-y-1 flex flex-col items-center">
+                    <div className="flex items-center justify-center  gap-2">
                         <span className="text-2xl font-black font-mono text-white">{devices}</span>
                     </div>
                     <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">{devicesLabel}</p>

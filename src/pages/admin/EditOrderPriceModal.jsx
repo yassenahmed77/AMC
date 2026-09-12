@@ -106,41 +106,41 @@ function EditOrderPriceModal({ order, isOpen, onClose, onSaveSuccess }) {
     };
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fadeIn">
-            <div className="bg-white rounded-3xl border border-slate-100 shadow-2xl max-w-lg w-full max-h-[90vh] overflow-hidden flex flex-col">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md animate-fadeIn">
+            <div className="bg-slate-900/95 backdrop-blur-2xl rounded-3xl border border-white/10 shadow-2xl max-w-lg w-full max-h-[90vh] overflow-hidden flex flex-col">
                 
                 {/* Modal Header */}
-                <div className="p-6 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
+                <div className="p-6 border-b border-white/10 flex items-center justify-between bg-slate-950/60">
                     <div>
-                        <span className="text-xs font-black bg-maincolor/10 text-maincolor px-2.5 py-1 rounded-full uppercase tracking-wider">
+                        <span className="text-xs font-black bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 px-2.5 py-1 rounded-full uppercase tracking-wider font-mono">
                             Order #{order.order_number}
                         </span>
-                        <h2 className="text-xl font-black text-slate-800 uppercase tracking-tight mt-1">
+                        <h2 className="text-xl font-black text-white uppercase tracking-tight mt-1.5">
                             {order.status === 'confirmed' ? 'Edit Agreed Prices' : 'Set Prices & Confirm Order'}
                         </h2>
                     </div>
                     <button 
                         onClick={onClose} 
-                        className="w-9 h-9 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 hover:text-slate-800 flex items-center justify-center transition-colors cursor-pointer"
+                        className="w-9 h-9 rounded-full bg-slate-800/80 text-slate-400 hover:bg-slate-700 hover:text-white flex items-center justify-center transition-colors cursor-pointer"
                     >
                         <X size={18} />
                     </button>
                 </div>
 
                 {/* Modal Body */}
-                <form onSubmit={handleSave} className="p-6 overflow-y-auto flex-grow flex flex-col gap-6">
+                <form onSubmit={handleSave} className="p-6 overflow-y-auto flex-grow flex flex-col gap-6 custom-scrollbar">
                     
                     {/* Customer Info Box */}
-                    <div className="bg-blue-50/60 border border-blue-100 rounded-2xl p-4 flex flex-col gap-1 text-xs">
-                        <span className="font-bold text-slate-800 uppercase">Customer: {order.customer_name}</span>
-                        <span className="text-slate-600 font-medium">Phone: {order.customer_phone}</span>
-                        <span className="text-slate-600 font-medium">Gov: {order.customer_governorate}</span>
+                    <div className="bg-slate-950/70 border border-white/10 rounded-2xl p-4 flex flex-col gap-1 text-xs">
+                        <span className="font-bold text-white uppercase">Customer: {order.customer_name}</span>
+                        <span className="text-slate-300 font-medium">Phone: {order.customer_phone}</span>
+                        <span className="text-slate-300 font-medium">Gov: {order.customer_governorate}</span>
                     </div>
 
                     {/* Ordered Items Prices Form */}
                     <div className="flex flex-col gap-4">
-                        <label className="text-xs font-extrabold text-slate-700 uppercase flex items-center gap-1.5">
-                            <Tag size={14} className="text-maincolor" />
+                        <label className="text-xs font-extrabold text-slate-300 uppercase flex items-center gap-1.5">
+                            <Tag size={14} className="text-cyan-400" />
                             Items Unit Prices (EGP)
                         </label>
 
@@ -151,12 +151,12 @@ function EditOrderPriceModal({ order, isOpen, onClose, onSaveSuccess }) {
                                 const subtotal = unitPrice * qty;
 
                                 return (
-                                    <div key={idx} className="p-3.5 bg-slate-50 rounded-2xl border border-slate-200/80 flex flex-col gap-2">
+                                    <div key={idx} className="p-3.5 bg-slate-950/60 rounded-2xl border border-white/10 flex flex-col gap-2">
                                         <div className="flex items-center justify-between">
-                                            <span className="font-extrabold text-slate-800 text-xs uppercase truncate max-w-[200px]">
+                                            <span className="font-extrabold text-white text-xs uppercase truncate max-w-[200px]">
                                                 {item.name}
                                             </span>
-                                            <span className="text-xs font-black text-slate-500 bg-white px-2 py-0.5 rounded border border-slate-200">
+                                            <span className="text-xs font-black text-slate-300 bg-slate-900 px-2 py-0.5 rounded border border-white/10">
                                                 Qty: {qty}
                                             </span>
                                         </div>
@@ -170,14 +170,14 @@ function EditOrderPriceModal({ order, isOpen, onClose, onSaveSuccess }) {
                                                     value={itemPrices[idx] ?? ''}
                                                     onChange={(e) => handlePriceChange(idx, e.target.value)}
                                                     placeholder="Agreed Price (EGP)"
-                                                    className="w-full px-3 py-2 bg-white rounded-xl border border-slate-300 text-xs font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-maincolor/20 focus:border-maincolor"
+                                                    className="w-full px-3 py-2 bg-slate-900 rounded-xl border border-white/15 text-xs font-bold text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400"
                                                 />
-                                                <span className="absolute right-3 top-2 text-[10px] font-bold text-slate-400">EGP</span>
+                                                <span className="absolute right-3 top-2 text-[10px] font-bold text-slate-500">EGP</span>
                                             </div>
 
                                             <div className="text-right shrink-0 min-w-[70px]">
-                                                <span className="text-[10px] text-slate-400 font-semibold block">Total</span>
-                                                <span className="text-xs font-extrabold text-maincolor font-mono">
+                                                <span className="text-[10px] text-slate-500 font-semibold block">Total</span>
+                                                <span className="text-xs font-extrabold text-cyan-400 font-mono">
                                                     {subtotal > 0 ? `${subtotal.toLocaleString()} EGP` : '0 EGP'}
                                                 </span>
                                             </div>
@@ -189,9 +189,9 @@ function EditOrderPriceModal({ order, isOpen, onClose, onSaveSuccess }) {
                     </div>
 
                     {/* Total Agreed Order Value */}
-                    <div className="pt-2 border-t border-slate-100 flex flex-col gap-2">
-                        <label className="text-xs font-extrabold text-slate-700 uppercase flex items-center gap-1.5">
-                            <Calculator size={14} className="text-emerald-600" />
+                    <div className="pt-2 border-t border-white/10 flex flex-col gap-2">
+                        <label className="text-xs font-extrabold text-slate-300 uppercase flex items-center gap-1.5">
+                            <Calculator size={14} className="text-cyan-400" />
                             Final Total Order Price (EGP)
                         </label>
 
@@ -206,9 +206,9 @@ function EditOrderPriceModal({ order, isOpen, onClose, onSaveSuccess }) {
                                     setIsCustomTotal(true);
                                 }}
                                 placeholder="Total Order Value"
-                                className="w-full px-4 py-3 bg-emerald-50/50 rounded-xl border border-emerald-200 text-sm font-black text-emerald-900 focus:outline-none focus:ring-2 focus:ring-emerald-300"
+                                className="w-full px-4 py-3 bg-slate-950/90 rounded-xl border border-cyan-500/40 text-sm font-black text-cyan-300 focus:outline-none focus:border-cyan-400 font-mono"
                             />
-                            <span className="absolute right-4 top-3.5 text-xs font-extrabold text-emerald-600">EGP</span>
+                            <span className="absolute right-4 top-3.5 text-xs font-extrabold text-cyan-400 font-mono">EGP</span>
                         </div>
                         <span className="text-[10px] text-slate-400 font-semibold">
                             * Auto-calculated sum of item prices. You can also type an overall custom total if a discount was given.
@@ -216,18 +216,18 @@ function EditOrderPriceModal({ order, isOpen, onClose, onSaveSuccess }) {
                     </div>
 
                     {/* Modal Actions */}
-                    <div className="flex gap-3 pt-4 border-t border-slate-100">
+                    <div className="flex gap-3 pt-4 border-t border-white/10">
                         <button
                             type="button"
                             onClick={onClose}
-                            className="flex-1 py-3 rounded-xl border border-slate-200 text-slate-600 text-xs font-bold hover:bg-slate-100 transition-colors cursor-pointer"
+                            className="flex-1 py-3 rounded-xl border border-white/15 text-slate-300 text-xs font-bold hover:bg-white/10 transition-colors cursor-pointer"
                         >
                             Cancel
                         </button>
                         <button
                             type="submit"
                             disabled={saving}
-                            className="flex-1 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-black uppercase tracking-wider shadow-md shadow-emerald-600/20 transition-all cursor-pointer disabled:opacity-50 flex items-center justify-center gap-2"
+                            className="flex-1 py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 text-xs font-black uppercase tracking-wider shadow-lg shadow-cyan-500/25 transition-all cursor-pointer disabled:opacity-50 flex items-center justify-center gap-2"
                         >
                             <CheckCircle2 size={16} />
                             {saving ? 'Saving...' : order.status === 'confirmed' ? 'Save Prices' : 'Save & Confirm Order'}
