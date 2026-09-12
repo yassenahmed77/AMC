@@ -90,7 +90,7 @@ function EditOrderPriceModal({ order, isOpen, onClose, onSaveSuccess }) {
                     await supabase.rpc('confirm_order_and_decrement_stock', {
                         p_order_id: order.id
                     });
-                } catch (rpcErr) {
+                } catch {
                     // Ignore if RPC already handled status or doesn't exist
                 }
             }

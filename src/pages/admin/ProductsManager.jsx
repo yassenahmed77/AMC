@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '../../lib/supabase';
-import { Package, Plus, Pencil, Trash2, ShieldAlert, PlusCircle, MinusCircle, Upload, X, RefreshCw, Eye } from 'lucide-react';
+import { Package, Plus, Pencil, Trash2, PlusCircle, MinusCircle, Upload, X, RefreshCw } from 'lucide-react';
 import toast from 'react-hot-toast';
 import imageCompression from 'browser-image-compression';
 

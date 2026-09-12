@@ -38,7 +38,7 @@ function ProductsDetails() {
     const [userActiveImage, setUserActiveImage] = useState(null);
     const [qty, setQty] = useState(1);
 
-    const { data: product, isLoading: loading, isError, error } = useQuery({
+    const { data: product, isLoading: loading, error } = useQuery({
         queryKey: ['product', id],
         queryFn: () => fetchProductById(id),
         enabled: Boolean(id),

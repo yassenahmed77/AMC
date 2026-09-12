@@ -1,7 +1,6 @@
 import { Clock, CheckCircle2, XCircle, User, Phone, Building2, MapPin } from 'lucide-react';
 
-function OrderCard({ order, actionLoadingId, onRequestConfirm, onRequestCancel, onOpenPriceModal }) {
-    const isProcessing = actionLoadingId === order.id;
+function OrderCard({ order, actionLoadingId, onRequestCancel, onOpenPriceModal }) {
 
     return (
         <div 
