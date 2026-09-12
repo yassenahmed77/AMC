@@ -59,7 +59,7 @@ export function CartProvider({ children }) {
                         onClick={() => toast.dismiss(t.id)}
                         className="bg-maincolor text-white px-3 py-1.5 rounded-lg text-xs font-black shrink-0 hover:bg-maincolor/90 transition-colors shadow-sm"
                     >
-                        الذهاب للسلة 🛒
+                        الذهاب للسلة
                     </Link>
                 </div>
             ), { id: `add-to-cart-${product.id}`, duration: 4000, position: 'bottom-right' });

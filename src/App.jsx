@@ -39,13 +39,25 @@ function App() {
   return (
     <ErrorBoundary>
       <main className="bg-[#020712] text-slate-100 min-h-screen flex flex-col justify-between relative overflow-x-hidden">
-          {/* Living GSAP Light Arcs, Traveling Beams & Particle Wave Background across the Whole Website */}
+          {/* Ultra-Lightweight Pure GPU Vector Beams & Ambient Background */}
           <GlobalAnimatedBackground />
 
           <div className="relative z-10 flex-grow">
               <ScrollToTop />
               <Header/>
-              <Toaster position="bottom-right" />
+              <Toaster 
+                  position="bottom-right" 
+                  containerStyle={{
+                      bottom: 95,
+                      right: 20,
+                      zIndex: 9999999,
+                  }}
+                  toastOptions={{
+                      style: {
+                          zIndex: 9999999,
+                      }
+                  }}
+              />
               <div className={isHome ? '' : 'pt-24 lg:pt-28'}>
                   <Suspense fallback={<PageFallbackLoader />}>
                       <Routes>

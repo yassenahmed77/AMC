@@ -1,5 +1,5 @@
 import { Link } from 'react-router';
-import { ShieldCheck, Truck, Wrench, HeartHandshake, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { ShieldCheck, Truck, Wrench, HeartHandshake, CheckCircle2 } from 'lucide-react';
 import TrustedSupplierCard from '../components/TrustedSupplierCard';
 
 function About() {
@@ -69,7 +69,6 @@ function About() {
                                 className="inline-flex items-center justify-center gap-3 bg-cyan-500 text-slate-950 px-7 py-3.5 rounded-2xl text-xs font-black uppercase tracking-wider shadow-lg shadow-cyan-500/20 hover:bg-cyan-400 active:scale-95 transition-all duration-300 group border border-cyan-400/40"
                             >
                                 <span>Explore Our Products</span>
-                                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                             </Link>
                         </div>
                     </div>

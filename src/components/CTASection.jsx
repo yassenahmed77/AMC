@@ -1,5 +1,4 @@
 import { Link } from 'react-router';
-import { PhoneCall, ArrowRight } from 'lucide-react';
 
 function CTASection() {
     return (
@@ -29,7 +28,6 @@ function CTASection() {
                             to="/contact" 
                             className="inline-flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-6 py-3.5 rounded-2xl text-xs uppercase tracking-wider shadow-lg shadow-cyan-500/20 transition-all duration-300 cursor-pointer"
                         >
-                            <PhoneCall size={16} />
                             <span>Contact Us Now</span>
                         </Link>
 
@@ -38,7 +36,6 @@ function CTASection() {
                             className="inline-flex items-center justify-center gap-2 bg-slate-900/90 hover:bg-slate-800 text-white font-bold px-6 py-3.5 rounded-2xl text-xs uppercase tracking-wider border border-white/10 transition-all duration-300 cursor-pointer"
                         >
                             <span>Browse Products</span>
-                            <ArrowRight size={16} />
                         </Link>
                     </div>
 

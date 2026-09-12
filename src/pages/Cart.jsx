@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
 import { useCart } from '../context/CartContext';
-import { Trash2, Minus, Plus, ShoppingBag, ArrowLeft, ArrowDown } from 'lucide-react';
+import { Trash2, Minus, Plus, ShoppingBag, ArrowLeft } from 'lucide-react';
 
 function Cart() {
     const { cartItems, addToCart, decreaseQuantity, removeFromCart } = useCart();
@@ -43,7 +43,6 @@ function Cart() {
                         <div className="lg:col-span-2 flex flex-col gap-5">
                             {/* Information Banner */}
                             <div className="bg-cyan-950/50 border border-cyan-500/30 rounded-2xl p-4 flex items-start gap-3 backdrop-blur-md">
-                                <div className="text-cyan-400 text-lg">💡</div>
                                 <p className="text-xs sm:text-sm font-bold text-cyan-100 leading-relaxed">
                                     جميع الأسعار قابلة للتفاوض، وسيتم التواصل معكم فور إرسال الطلب لتأكيد السعر النهائي وتأكيد الطلب.
                                 </p>
@@ -123,19 +122,18 @@ function Cart() {
                                 </div>
                                 <div className="bg-emerald-500/10 border border-emerald-500/25 rounded-2xl p-4 flex flex-col gap-2">
                                     <span className="text-xs font-bold text-emerald-400 flex items-center gap-1.5">
-                                        📞 التواصل والتسليم
+                                        التواصل والتسليم
                                     </span>
                                     <p className="text-xs text-emerald-200/90 font-medium leading-relaxed">
                                         سيتم التواصل معكم هاتفياً أو عبر الواتساب فور إرسال الطلب لتأكيد السعر النهائي وتأكيد الطلب.
                                     </p>
                                 </div>
-                                <div className="flex items-center justify-center gap-1.5 text-cyan-400 text-xs font-black pt-2 pb-1 animate-bounce">
+                                <div className="flex items-center justify-center gap-1.5 text-cyan-400 text-xs font-black pt-2 pb-1">
                                     <span>اضغط بالأسفل لإتمام الطلب والتواصل</span>
-                                    <ArrowDown size={16} className="text-cyan-400 shrink-0" />
                                 </div>
                             </div>
                             <Link to="/checkout" className="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black uppercase py-4 rounded-xl shadow-lg shadow-cyan-500/25 hover:shadow-cyan-400/40 hover:-translate-y-0.5 transition-all duration-300 cursor-pointer mt-1 text-center text-sm block tracking-wider">
-                                Proceed to Checkout ➔
+                                Proceed to Checkout
                             </Link>
                         </div>
                     </div>

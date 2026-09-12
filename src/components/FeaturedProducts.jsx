@@ -3,7 +3,6 @@ import { Link } from 'react-router';
 import { supabase } from '../lib/supabase';
 import ProductCard from '../pages/products/ProductCard';
 import ProductCardSkeleton from '../pages/products/ProductCardSkeleton';
-import { ArrowRight } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 async function fetchFeaturedProducts() {
@@ -48,7 +47,6 @@ function FeaturedProducts() {
                             className="group inline-flex items-center gap-1.5 text-cyan-400 hover:text-cyan-300 font-bold text-sm sm:text-base transition-colors duration-300 whitespace-nowrap cursor-pointer"
                         >
                             <span>View All Products</span>
-                            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" />
                         </Link>
                     </div>
                 </div>

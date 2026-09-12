@@ -42,7 +42,7 @@ const partnersGallery = [
     {
         id: 1,
         src: '/images/partners/mindray-partner-3.jpg',
-        title: '🌎تكريم دولي',
+        title: 'تكريم دولي',
         pinColor: 'red',
         pinPos: 'left-1/2 -translate-x-1/2',
         rotation: '-rotate-3 sm:-rotate-5',
@@ -52,7 +52,7 @@ const partnersGallery = [
     {
         id: 2,
         src: '/images/partners/mindray-partner-1.jpg',
-        title: '🩺احدث الاجهزة',
+        title: 'تسليمات الاجهزة',
         pinColor: 'blue',
         pinPos: 'right-7',
         rotation: 'rotate-4 sm:rotate-6',
@@ -62,7 +62,7 @@ const partnersGallery = [
     {
         id: 3,
         src: '/images/partners/mindray-partner-2.jpg',
-        title: '🏥تسليم جهاز',
+        title: 'تسليمات الاجهزة',
         pinColor: 'gold',
         pinPos: 'left-8',
         rotation: '-rotate-2 sm:-rotate-4',
@@ -72,7 +72,7 @@ const partnersGallery = [
     {
         id: 4,
         src: '/images/partners/mindray-partner-4.jpg',
-        title: '🌍تكريم دولي',
+        title: 'تكريم دولي',
         pinColor: 'green',
         pinPos: 'left-1/2 -translate-x-1/2',
         rotation: 'rotate-3 sm:rotate-5',
@@ -82,7 +82,7 @@ const partnersGallery = [
     {
         id: 5,
         src: '/images/partners/mindray-partner-5.jpg',
-        title: '🌍ملتقي دولي',
+        title: 'ملتقي دولي',
         pinColor: 'red',
         pinPos: 'right-6',
         rotation: '-rotate-4 sm:-rotate-6',
@@ -92,7 +92,7 @@ const partnersGallery = [
     {
         id: 6,
         src: '/images/partners/clinic-partner-1.jpg',
-        title: '🏥تجهيز حضانات وسونار',
+        title: 'تسليمات الاجهزة',
         pinColor: 'gold',
         pinPos: 'left-7',
         rotation: 'rotate-2 sm:rotate-4',
@@ -102,7 +102,7 @@ const partnersGallery = [
     {
         id: 7,
         src: '/images/partners/clinic-partner-2.jpg',
-        title: '🩺سونار 4D وطابعة',
+        title:'تسليمات الاجهزة',
         pinColor: 'blue',
         pinPos: 'left-1/2 -translate-x-1/2',
         rotation: '-rotate-3 sm:-rotate-5',
@@ -112,7 +112,7 @@ const partnersGallery = [
     {
         id: 8,
         src: '/images/partners/clinic-partner-3.jpg',
-        title: '🏥تسليم وتشغيل عيادة',
+        title: 'تسليمات الاجهزة',
         pinColor: 'red',
         pinPos: 'right-8',
         rotation: 'rotate-4 sm:rotate-6',
@@ -122,7 +122,7 @@ const partnersGallery = [
     {
         id: 9,
         src: '/images/partners/clinic-partner-4.jpg',
-        title: '🩺سونار فيليبس التخصصي',
+        title: 'تسليمات الاجهزة',
         pinColor: 'green',
         pinPos: 'left-6',
         rotation: '-rotate-2 sm:-rotate-4',
@@ -132,7 +132,7 @@ const partnersGallery = [
     {
         id: 10,
         src: '/images/partners/clinic-partner-5.jpg',
-        title: '🤝فريق العمل والأطباء',
+        title: 'تسليمات الاجهزة',
         pinColor: 'blue',
         pinPos: 'left-1/2 -translate-x-1/2',
         rotation: 'rotate-3 sm:rotate-5',
@@ -155,11 +155,11 @@ function CorkboardTrust() {
                     </p>
 
                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight uppercase leading-tight">
-                        شركاء <span className="text-cyan-400 drop-shadow-[0_0_15px_rgba(6,182,212,0.5)]">النجاح</span> 📌
+                        شركاء <span className="text-cyan-400 drop-shadow-[0_0_15px_rgba(6,182,212,0.5)]">النجاح</span> 
                     </h2>
                     
                     <p className="text-slate-300 text-xs sm:text-base mt-2 font-semibold max-w-2xl mx-auto leading-relaxed">
-                        محطات وتكريمات دولية وتجهيزات ميدانية لأحدث الأجهزة الطبية بمصر والشرق الأوسط.
+                        محطات وتكريمات دولية تسليمات لأحدث الأجهزة الطبية بمصر والشرق الأوسط.
                     </p>
                 </div>
 
@@ -171,13 +171,13 @@ function CorkboardTrust() {
                     <div className="absolute -top-6 right-12 w-6 h-10 border-4 border-slate-700 bg-slate-800 rounded-t-full shadow-inner hidden sm:block" />
 
                     {/* Organically Scattered Photos */}
-                    <div className="flex flex-wrap justify-center gap-6 sm:gap-7 lg:gap-8 items-center relative z-10 py-4 sm:py-6">
-                        {partnersGallery.map((photo, index) => (
-                            <div 
-                                key={photo.id}
-                                className={`w-full sm:w-[calc(50%-1.25rem)] lg:w-[calc(33.333%-1.5rem)] xl:w-[calc(25%-1.5rem)] max-w-[285px] sm:max-w-[305px] transition-transform duration-300 ${photo.offsetY || ''}`}
-                            >
-                                <ScrollReveal variant="fade-up" delay={`delay-${((index % 4) + 1) * 100}`}>
+                    <ScrollReveal variant="fade-up">
+                        <div className="flex flex-wrap justify-center gap-6 sm:gap-7 lg:gap-8 items-center relative z-10 py-4 sm:py-6">
+                            {partnersGallery.map((photo) => (
+                                <div 
+                                    key={photo.id}
+                                    className={`w-full sm:w-[calc(50%-1.25rem)] lg:w-[calc(33.333%-1.5rem)] xl:w-[calc(25%-1.5rem)] max-w-[285px] sm:max-w-[305px] transition-transform duration-300 ${photo.offsetY || ''}`}
+                                >
                                     <div 
                                         onClick={() => setSelectedPhoto(photo)}
                                         className={`bg-white/95 p-1.5 sm:p-2 pb-2.5 sm:pb-3 rounded-xl sm:rounded-2xl shadow-xl polaroid-card border border-slate-200/90 group cursor-pointer transition-all duration-300 hover:scale-110 hover:rotate-0 hover:z-40 hover:shadow-2xl relative ${photo.rotation}`}
@@ -190,6 +190,7 @@ function CorkboardTrust() {
                                             <img 
                                                 src={photo.src} 
                                                 alt={photo.title} 
+                                                decoding="async"
                                                 className={`w-full h-full object-cover ${photo.id === 2 ? 'object-[center_15%]' : photo.id === 3 ? 'object-[center_35%]' : 'object-center'} group-hover:scale-105 transition-transform duration-300 block`} 
                                                 loading="lazy" 
                                             />
@@ -207,10 +208,10 @@ function CorkboardTrust() {
                                             </h4>
                                         </div>
                                     </div>
-                                </ScrollReveal>
-                            </div>
-                        ))}
-                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </ScrollReveal>
 
                 </div>
 

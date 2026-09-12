@@ -11,12 +11,7 @@ import {
     Minus, 
     Plus, 
     Phone, 
-    MessageSquare, 
-    MessageCircle, 
-    ArrowLeft,
-    ShieldCheck,
-    Truck,
-    Headphones
+    ArrowLeft
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 
@@ -191,7 +186,6 @@ function ProductsDetails() {
                                             rel="noopener noreferrer"
                                             className="inline-flex items-center gap-2 bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-300 text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl border border-emerald-500/30 transition-all shadow-md shadow-emerald-500/10 cursor-pointer"
                                         >
-                                            <MessageCircle className="w-4 h-4 text-emerald-400" />
                                             <span>استفسر عن السعر على الواتساب</span>
                                         </a>
                                         <span className="text-xs font-medium text-slate-400 block">
@@ -307,23 +301,19 @@ function ProductsDetails() {
                                 rel="noopener noreferrer"
                                 className="w-full sm:w-auto flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-6 py-4 rounded-xl shadow-lg shadow-emerald-600/25 hover:-translate-y-0.5 active:translate-y-0 transition-all cursor-pointer shrink-0 text-sm sm:text-base"
                             >
-                                <MessageSquare className="w-4 h-4" />
                                 <span>WhatsApp</span>
                             </a>
                         </div>
 
                         {/* Medical Equipment Trust Highlights */}
-                        <div className="pt-4 grid grid-cols-1 sm:grid-cols-3 gap-3 border-t border-white/10 text-xs">
-                            <div className="flex items-center gap-2 text-slate-300">
-                                <ShieldCheck className="w-4 h-4 text-cyan-400 shrink-0" />
+                        <div className="pt-4 grid grid-cols-1 sm:grid-cols-3 gap-3 border-t border-white/10 text-xs text-center sm:text-left">
+                            <div className="flex items-center justify-center sm:justify-start text-slate-300">
                                 <span>100% Certified & Inspected</span>
                             </div>
-                            <div className="flex items-center gap-2 text-slate-300">
-                                <Truck className="w-4 h-4 text-cyan-400 shrink-0" />
+                            <div className="flex items-center justify-center sm:justify-start text-slate-300">
                                 <span>Fast Hospital Delivery</span>
                             </div>
-                            <div className="flex items-center gap-2 text-slate-300">
-                                <Headphones className="w-4 h-4 text-cyan-400 shrink-0" />
+                            <div className="flex items-center justify-center sm:justify-start text-slate-300">
                                 <span>Engineer Technical Support</span>
                             </div>
                         </div>

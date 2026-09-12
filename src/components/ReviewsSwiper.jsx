@@ -1,14 +1,13 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { ChevronLeft, ChevronRight, Star, CheckCheck, MessageCircle } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Star, CheckCheck } from 'lucide-react';
 
 // Star Rating Component
 function StarRating({ rating = 5 }) {
     return (
-        <div className="flex items-center gap-1 mb-3">
+        <div className="flex items-center gap-0.5 shrink-0">
             {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                <Star key={i} className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-amber-400 text-amber-400" />
             ))}
-            <span className="text-xs font-bold text-amber-400 mr-1.5">{rating.toFixed(1)} / 5.0</span>
         </div>
     );
 }
@@ -16,62 +15,62 @@ function StarRating({ rating = 5 }) {
 const reviewsData = [
     {
         id: 1,
-        author: "د. محمود السيد",
-        role: "عيادة أنف وأذن وحنجرة - القاهرة",
+        author: "د. محمد عمرو",
+        role: null,
         time: "11:42 AM",
-        message: "ما شاء الله مولد الأكسجين يوفيل 10 لتر وصل في نفس اليوم، الجهاز صوت هادئ وأداء ممتاز والضمان معتمد مع الفاتورة. شكراً جداً يا AMC على السرعة 👍🏥",
+        message: 'تسلم يا هندسة والله معاملة وسرعة استجابة فوق الممتاز وان شاء الله مش هيكون اخر تعامل معاك بإذن الله ❤️',
         rating: 5,
-        badge: "طلب مؤكد ✔️",
+        badge: null,
         avatarBg: "bg-emerald-700/30 border-emerald-500/40 text-emerald-400"
     },
     {
         id: 2,
-        author: "م. طارق حسن",
-        role: "المقطم - القاهرة",
+        author: "د. زياد محمد",
+        role: null,
         time: "02:15 PM",
-        message: "جهاز البيباب والسباب CPAP فتح الرئة والتنفس بقى مريح جداً للوالد. ومتابعة المهندس الفني من الشحنة للتركيب كانت قمة في الاحترافية والذوق 💯✨",
+        message: "من احسن الناس الي اتعاملت معاها واتشرفت بمعرفتك والله يا هندسة برا الشغل قبل جوا الشغلة ",
         rating: 5,
-        badge: "عميل VIP ⭐️",
+        badge: null,
         avatarBg: "bg-amber-700/30 border-amber-500/40 text-amber-400"
     },
     {
         id: 3,
-        author: "الحاجة فاطمة وعائلتها",
-        role: "سموحة - الإسكندرية",
+        author: "د. عمر خفاجي",
+        role: null,
         time: "06:08 PM",
-        message: "السرير الطبي الكهربائي 3 حركة ممتاز وسهل الاستخدام جداً.. والضمان والتركيب تم في البيت ببراعة. ربنا يبارك فيكم وفي أمانتكم 💙",
+        message:'شرف ليا يا بشمهندس حسن والله اني اتعاملت معاك ومن اكتر الشركات المحترمة في معادها ومن الناس الجميلة جداً الي اتبسطت في التعامل معاها',
         rating: 5,
-        badge: "شحن سريع 🚚",
+        badge: null,
         avatarBg: "bg-blue-700/30 border-blue-500/40 text-blue-400"
     },
     {
         id: 4,
-        author: "د. سارة رشدي",
-        role: "استشاري رعاية مركزة - الجيزة",
+        author: "د. محمد عرفات",
+        role: null,
         time: "08:30 PM",
-        message: "تعاملت مع شركات كتير لكن AMC بيتميزوا بالأمانة، أجهزة جديدة زيرو وبضمان حقيقي والدعم الفني معاك 24 ساعة. بنرشحكم دائماً لكل المرضى والعيادات 🌿",
+        message: 'انا سعيد اكتر والله يا بشمهندس حسن اني اتعاملت مع حضرتك شخصية محترمة وتدرس فالادب والاخلاق وخدمة ما بعد البيع وان شاء الله مش اخر تعامل معاك يا هندسة',
         rating: 5,
-        badge: "استشاري طب 🩺",
+        badge: null,
         avatarBg: "bg-purple-700/30 border-purple-500/40 text-purple-400"
     },
     {
         id: 5,
-        author: "د. أحمد عبد الرحمن",
-        role: "مركز المنصورة للأشعة",
+        author:"د. اواب السيد",
+        role: null,
         time: "04:55 PM",
-        message: "تجهيز قسم السونار بأجهزة Mindray تمت في وقت قياسي وبأعلى معايير الدقة. الدعم الهندسي وتدريب الأطباء كان ممتازاً جداً. فخورين بالتعامل معكم 🏆",
+        message: 'دا انا الي اتشرفت بمعرفتك ودا مش اول تعامل مع حضرتك لو تفتكر انا الي خدت من حضرتك في 2024 الDC-7  ودا الي خلاني اجي لحضرتك تاني الاجهزة حالتها فوق الممتاز وطبعا غير تعامل حضرتك وذوقك الحلو',
         rating: 5,
-        badge: "مركز معتمد 🏥",
+        badge: null,
         avatarBg: "bg-cyan-700/30 border-cyan-500/40 text-cyan-400"
     },
     {
         id: 6,
-        author: "د. إبراهيم فؤاد",
-        role: "مجمع العيادات التخصصية - طنطا",
+        author: "د. بلال عمرو",
+        role: null,
         time: "09:12 AM",
-        message: "أجهزة رسم القلب ومونيتور المريض من AMC بتوفر قراءات دقيقة ومستقرة للغاية. التوريد كان سريع جداً وخدمة ما بعد البيع فوق الممتازة ⭐️",
+        message: 'انا مبسوطه اكتر اني اتعاملت مع حضرتك من الناس الخلوقة ومن احسن الشركات الي اتعاملت معاها وربنا يوفقك يا بشمهندس',
         rating: 5,
-        badge: "طبيب معتمد 🩺",
+        badge: null,
         avatarBg: "bg-teal-700/30 border-teal-500/40 text-teal-400"
     }
 ];
@@ -85,19 +84,15 @@ function ReviewsSwiper() {
 
     const total = reviewsData.length;
 
-    // Detect responsive slidesPerView
+    // Detect responsive slidesPerView with state guard
     useEffect(() => {
         const updateSlides = () => {
-            if (window.innerWidth >= 1280) {
-                setSlidesPerView(3);
-            } else if (window.innerWidth >= 640) {
-                setSlidesPerView(2);
-            } else {
-                setSlidesPerView(1);
-            }
+            const w = window.innerWidth;
+            const newCount = w >= 1280 ? 3 : w >= 640 ? 2 : 1;
+            setSlidesPerView((prev) => (prev !== newCount ? newCount : prev));
         };
         updateSlides();
-        window.addEventListener('resize', updateSlides);
+        window.addEventListener('resize', updateSlides, { passive: true });
         return () => window.removeEventListener('resize', updateSlides);
     }, []);
 
@@ -123,6 +118,7 @@ function ReviewsSwiper() {
     // Touch swipe handlers
     const handleTouchStart = (e) => {
         touchStartX.current = e.touches[0].clientX;
+        touchEndX.current = e.touches[0].clientX;
     };
 
     const handleTouchMove = (e) => {
@@ -131,7 +127,7 @@ function ReviewsSwiper() {
 
     const handleTouchEnd = () => {
         const diff = touchStartX.current - touchEndX.current;
-        if (Math.abs(diff) > 50) {
+        if (Math.abs(diff) > 40) {
             if (diff > 0) {
                 nextSlide();
             } else {
@@ -153,11 +149,11 @@ function ReviewsSwiper() {
                 </p>
 
                 <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-white uppercase tracking-tight leading-tight mb-3">
-                    آراء عملائنا | <span className="text-cyan-400 drop-shadow-[0_0_15px_rgba(6,182,212,0.5)]">ثقة حقيقية</span> 💬
+                    آراء عملائنا | <span className="text-cyan-400 drop-shadow-[0_0_15px_rgba(6,182,212,0.5)]">ثقة حقيقية</span> 
                 </h2>
 
                 <p className="text-slate-300 text-xs sm:text-sm font-medium leading-relaxed">
-                    رسائل واتساب وتجارب موثقة من الأطباء والمستشفيات والعملاء في كافة محافظات مصر.
+                    رسائل وتجارب موثقة من الأطباء والمستشفيات والعملاء في كافة محافظات مصر.
                 </p>
             </div>
 
@@ -191,7 +187,8 @@ function ReviewsSwiper() {
                     <div 
                         className="flex transition-transform duration-500 ease-out"
                         style={{
-                            transform: `translateX(-${currentIndex * (100 / slidesPerView)}%)`
+                            transform: `translateX(-${currentIndex * (100 / slidesPerView)}%)`,
+                            willChange: 'transform'
                         }}
                     >
                         {reviewsData.map((item) => (
@@ -199,41 +196,24 @@ function ReviewsSwiper() {
                                 key={item.id} 
                                 className="w-full sm:w-1/2 xl:w-1/3 shrink-0 px-2 sm:px-3 flex"
                             >
-                                <div className="w-full bg-slate-950/95 border border-slate-700/80 hover:border-cyan-400/50 rounded-2xl sm:rounded-3xl p-5 sm:p-6 shadow-xl transition-all duration-300 flex flex-col justify-between min-h-[280px] sm:min-h-[290px] group">
+                                <div className="w-full bg-slate-950/95 border border-slate-800 hover:border-cyan-500/40 rounded-2xl sm:rounded-3xl p-4 sm:p-5 shadow-xl transition-all duration-300 flex flex-col justify-between min-h-[190px] sm:min-h-[220px] group">
                                     
-                                    {/* WhatsApp Header */}
-                                    <div className="flex items-center justify-between border-b border-slate-800 pb-3 mb-3">
-                                        <div className="flex items-center gap-3">
-                                            <div className={`w-10 h-10 rounded-full border ${item.avatarBg} flex items-center justify-center font-black text-sm shrink-0`}>
-                                                {item.author[2] || item.author[0]}
-                                            </div>
-                                            <div>
-                                                <h4 className="text-white font-bold text-sm sm:text-base flex items-center gap-1.5">
-                                                    <span>{item.author}</span>
-                                                    <span className="text-[10px] bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded-full font-extrabold">
-                                                        {item.badge}
-                                                    </span>
-                                                </h4>
-                                                <p className="text-slate-400 text-xs font-medium">{item.role}</p>
-                                            </div>
-                                        </div>
-                                        <span className="text-emerald-400 bg-emerald-950/60 border border-emerald-800/80 px-2.5 py-1 rounded-lg text-[10px] font-bold flex items-center gap-1 shrink-0">
-                                            <MessageCircle size={12} />
-                                            <span>WhatsApp</span>
-                                        </span>
+                                    {/* Author & Star Rating Header */}
+                                    <div className="flex items-center justify-between border-b border-slate-800/80 pb-2.5 mb-3 gap-2">
+                                        <h4 className="text-white font-bold text-sm sm:text-base text-right truncate">
+                                            {item.author}
+                                        </h4>
+                                        <StarRating rating={item.rating} />
                                     </div>
 
-                                    {/* Star Rating */}
-                                    <StarRating rating={item.rating} />
-
-                                    {/* Message Bubble with equal height expansion */}
-                                    <div className="flex-1 bg-[#0b141a] text-slate-100 rounded-2xl p-3.5 sm:p-4 border border-emerald-900/40 text-xs sm:text-sm leading-relaxed font-medium relative shadow-inner flex flex-col justify-between">
-                                        <p className="dir-rtl text-right leading-relaxed line-clamp-3">
+                                    {/* Message Bubble & Time */}
+                                    <div className="flex-1 bg-[#0b141a]/95 text-slate-100 rounded-xl sm:rounded-2xl p-3.5 sm:p-4 border border-cyan-500/10 text-xs sm:text-sm leading-relaxed font-medium relative shadow-inner flex flex-col justify-between">
+                                        <p className="dir-rtl text-right leading-relaxed text-slate-200 line-clamp-4">
                                             {item.message}
                                         </p>
-                                        <div className="flex items-center justify-end gap-1 mt-2 text-[10px] text-slate-400 font-sans">
+                                        <div className="flex items-center justify-end gap-1.5 mt-2.5 text-[10px] text-slate-400 font-sans">
                                             <span>{item.time}</span>
-                                            <CheckCheck className="w-3.5 h-3.5 text-sky-400" />
+                                            <CheckCheck className="w-3.5 h-3.5 text-cyan-400" />
                                         </div>
                                     </div>
 

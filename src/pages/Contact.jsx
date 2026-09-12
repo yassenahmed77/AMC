@@ -1,4 +1,4 @@
-import { Phone, MessageCircle, MapPin, Mail, ExternalLink } from 'lucide-react';
+import { Phone, MessageCircle, MapPin, Mail } from 'lucide-react';
 import ServiceGuaranteePanel from '../components/ServiceGuaranteePanel';
 
 function InstagramIcon({ size = 20, className = "" }) {
@@ -68,7 +68,6 @@ function Contact() {
                             href={`tel:${phoneNumber.replace(/\s+/g, '')}`}
                             className="w-full inline-flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black py-3 rounded-xl text-xs uppercase tracking-wider shadow-lg shadow-cyan-500/25 transition-all duration-200 cursor-pointer"
                         >
-                            <Phone size={14} />
                             <span>Call Now</span>
                         </a>
                     </div>
@@ -91,7 +90,6 @@ function Contact() {
                             rel="noopener noreferrer"
                             className="w-full inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-black py-3 rounded-xl text-xs uppercase tracking-wider shadow-lg shadow-emerald-600/25 transition-all duration-200 cursor-pointer"
                         >
-                            <MessageCircle size={14} />
                             <span>Chat on WhatsApp</span>
                         </a>
                     </div>
@@ -112,7 +110,6 @@ function Contact() {
                             href={`mailto:${email}`}
                             className="w-full inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 rounded-xl text-xs uppercase tracking-wider border border-white/10 transition-all duration-200 cursor-pointer"
                         >
-                            <Mail size={14} />
                             <span>Send Email</span>
                         </a>
                     </div>
@@ -135,7 +132,6 @@ function Contact() {
                             rel="noopener noreferrer"
                             className="w-full inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 rounded-xl text-xs uppercase tracking-wider border border-white/10 transition-all duration-200 cursor-pointer"
                         >
-                            <MapPin size={14} />
                             <span>View on Google Maps</span>
                         </a>
                     </div>
@@ -158,7 +154,6 @@ function Contact() {
                             rel="noopener noreferrer"
                             className="w-full inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 rounded-xl text-xs uppercase tracking-wider border border-white/10 transition-all duration-200 cursor-pointer"
                         >
-                            <MapPin size={14} />
                             <span>Open in Maps</span>
                         </a>
                     </div>
@@ -182,7 +177,6 @@ function Contact() {
                                 rel="noopener noreferrer"
                                 className="flex-1 inline-flex items-center justify-center gap-1.5 bg-cyan-950/60 hover:bg-cyan-900/60 text-cyan-300 border border-cyan-500/30 font-bold py-3 rounded-xl text-xs uppercase tracking-wider transition-all duration-200"
                             >
-                                <InstagramIcon size={14} />
                                 <span>Instagram</span>
                             </a>
                             <a 
@@ -191,7 +185,6 @@ function Contact() {
                                 rel="noopener noreferrer"
                                 className="flex-1 inline-flex items-center justify-center gap-1.5 bg-cyan-950/60 hover:bg-cyan-900/60 text-cyan-300 border border-cyan-500/30 font-bold py-3 rounded-xl text-xs uppercase tracking-wider transition-all duration-200"
                             >
-                                <FacebookIcon size={14} />
                                 <span>Facebook</span>
                             </a>
                         </div>

@@ -198,7 +198,7 @@ function Checkout() {
                                 rel="noopener noreferrer"
                                 className="w-full flex-1 inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-3.5 rounded-xl font-bold text-xs sm:text-sm shadow-lg shadow-emerald-600/25 transition-all duration-300 cursor-pointer"
                             >
-                                <span>متابعة الطلب عبر الواتساب فوراً 💬</span>
+                                <span>متابعة الطلب عبر الواتساب فوراً</span>
                             </a>
                             <Link 
                                 to="/products" 
@@ -382,7 +382,7 @@ function Checkout() {
                                         <span>Submitting Order...</span>
                                     </>
                                 ) : (
-                                    <span>Confirm & Place Order ➔</span>
+                                    <span>Confirm & Place Order</span>
                                 )}
                             </button>
 
@@ -433,8 +433,8 @@ function Checkout() {
                             </div>
                         </div>
 
-                        <div className="bg-cyan-950/40 border border-cyan-500/30 rounded-xl p-3.5 text-xs text-cyan-200 leading-relaxed font-medium">
-                            🔒 جميع البيانات مشفرة وآمنة، ويتم التواصل هاتفياً لتأكيد التسليم.
+                        <div className="bg-cyan-950/40 border border-cyan-500/30 rounded-xl p-3.5 text-xs text-cyan-200 leading-relaxed font-medium text-center sm:text-right">
+                            يتم التواصل هاتفياً لتأكيد التسليم.
                         </div>
                     </div>
                 </div>

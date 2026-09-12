@@ -6,7 +6,7 @@
 }
 @layer base{
   html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
   }
   body{
     @apply font-sans min-h-screen text-slate-100 bg-[#020712] antialiased
@@ -20,13 +20,7 @@
   /* Corkboard & Wood Texture Styles */
   .corkboard-bg {
     background-color: #c98e54;
-    background-image: 
-      radial-gradient(rgba(120, 65, 20, 0.25) 1px, transparent 0),
-      radial-gradient(rgba(255, 220, 170, 0.3) 1px, transparent 0),
-      radial-gradient(rgba(90, 45, 10, 0.15) 2px, transparent 0);
-    background-size: 24px 24px, 36px 36px, 48px 48px;
-    background-position: 0 0, 12px 12px, 24px 24px;
-    box-shadow: inset 0 0 80px rgba(45, 20, 5, 0.6), inset 0 0 20px rgba(0, 0, 0, 0.4);
+    box-shadow: inset 0 0 50px rgba(45, 20, 5, 0.45);
   }
 
   .wood-frame {
@@ -36,15 +30,14 @@
   }
 
   .pin-shadow {
-    filter: drop-shadow(3px 8px 5px rgba(0, 0, 0, 0.45));
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
   }
 
   .tape-overlay {
-    background: rgba(255, 255, 255, 0.55);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    backdrop-filter: blur(1px);
-    border-left: 1px dashed rgba(255, 255, 255, 0.8);
-    border-right: 1px dashed rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    border-left: 1px dashed rgba(255, 255, 255, 0.85);
+    border-right: 1px dashed rgba(255, 255, 255, 0.85);
   }
 
   .polaroid-card {
@@ -56,40 +49,9 @@
     box-shadow: 0 22px 40px -10px rgba(0, 0, 0, 0.45), 0 6px 16px rgba(0, 0, 0, 0.2);
   }
 
-  /* Animated Glowing Orange Cracks */
-  @keyframes orangeGlowPulse {
-    0%, 100% {
-      opacity: 0.6;
-      filter: drop-shadow(0 0 4px #ff9d19) drop-shadow(0 0 12px #ff9d19);
-      stroke-dashoffset: 0;
-    }
-    50% {
-      opacity: 1;
-      filter: drop-shadow(0 0 10px #ff9d19) drop-shadow(0 0 22px #ff9d19);
-      stroke-dashoffset: 40;
-    }
-  }
 
-  .crack-glow-path {
-    stroke-dasharray: 25 15;
-    animation: orangeGlowPulse 4s ease-in-out infinite;
-  }
 
-  .crack-glow-path-reverse {
-    stroke-dasharray: 20 12;
-    animation: orangeGlowPulse 5s ease-in-out infinite reverse;
-  }
-
-  /* Light wall texture background for section */
-  .light-wall-bg {
-    background-color: #f8fafc;
-    background-image: 
-      radial-gradient(circle at 50% 50%, rgba(255, 157, 25, 0.08) 0%, transparent 60%),
-      radial-gradient(#e2e8f0 1px, transparent 1px);
-    background-size: 100% 100%, 28px 28px;
-  }
-
-  /* GPU-Accelerated Medical Beam & Ambient Animations (Zero JS Overhead) */
+  /* GPU-Accelerated Medical Background Animations (Zero JS Runtime / 100% Compositor Thread) */
   @keyframes beamFlow1 {
     from { stroke-dashoffset: 0; }
     to { stroke-dashoffset: -1200; }
@@ -106,34 +68,59 @@
   }
 
   @keyframes orbBreath {
-    0%, 100% { transform: scale(1); opacity: 0.75; }
-    50% { transform: scale(1.08); opacity: 0.95; }
+    0%, 100% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.05); opacity: 0.95; }
   }
 
   @keyframes particleFloat {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(8px); }
+    50% { transform: translateY(-8px); }
   }
 
   .animate-beam-1 {
-    animation: beamFlow1 6s linear infinite;
+    animation: beamFlow1 7s linear infinite;
   }
 
   .animate-beam-2 {
-    animation: beamFlow2 7.5s linear infinite;
+    animation: beamFlow2 8s linear infinite;
   }
 
   .animate-beam-3 {
-    animation: beamFlow3 9s linear infinite;
+    animation: beamFlow3 9.5s linear infinite;
   }
 
   .animate-orb-breath {
-    animation: orbBreath 5s ease-in-out infinite;
+    animation: orbBreath 6s ease-in-out infinite;
+    transform-origin: center center;
+    will-change: transform, opacity;
   }
 
   .animate-particles {
-    animation: particleFloat 4s ease-in-out infinite;
+    animation: particleFloat 4.5s ease-in-out infinite;
+    will-change: transform;
   }
+
+  /* Battery-saver and Low-Spec Accessibility Protection */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-beam-1,
+    .animate-beam-2,
+    .animate-beam-3,
+    .animate-orb-breath,
+    .animate-particles {
+      animation: none !important;
+    }
+  }
+
+  /* Light wall texture background for section */
+  .light-wall-bg {
+    background-color: #f8fafc;
+    background-image: 
+      radial-gradient(circle at 50% 50%, rgba(255, 157, 25, 0.08) 0%, transparent 60%),
+      radial-gradient(#e2e8f0 1px, transparent 1px);
+    background-size: 100% 100%, 28px 28px;
+  }
+
+
 
   /* Ultra-smooth Instant Hero Fade Entrance */
   @keyframes heroFadeIn {
