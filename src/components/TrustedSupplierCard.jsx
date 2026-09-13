@@ -1,7 +1,4 @@
-import { Award, Building2 } from 'lucide-react';
-
 function TrustedSupplierCard({
-    badgeText = "Trusted Medical Supplier",
     title = "Quality Equipment For Safe Patient Recovery",
     description = "For over 25 years, AMC has focused on delivering reliable medical technology, from respiratory concentrators to patient monitors and ICU setups.",
     years = "25+",
@@ -13,10 +10,6 @@ function TrustedSupplierCard({
         <div className="bg-slate-900 text-white rounded-3xl p-8 sm:p-10 shadow-2xl relative overflow-hidden border border-maincolor/30">
             {/* Decorative background ambient blur */}
             <div className="absolute -top-20 -right-20 w-64 h-64 bg-maincolor/30 rounded-full blur-3xl pointer-events-none" />
-
-            <span className="text-xs font-black uppercase tracking-widest text-maincolor bg-maincolor/10 px-3.5 py-1.5 rounded-full inline-block mb-6 border border-maincolor/30">
-                {badgeText}
-            </span>
 
             <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-white leading-snug mb-4">
                 {title}
