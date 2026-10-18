@@ -27,14 +27,11 @@ function Footer() {
                     
                     {/* Brand Column (Col 1-5 on Desktop) */}
                     <div className="sm:col-span-2 lg:col-span-5 space-y-4 flex flex-col items-center lg:items-start text-center lg:text-left">
-                        <div className="flex items-center justify-center lg:justify-start gap-3">
-                            <Link to="/" onClick={scrollToTop} className="w-10 h-10 block shrink-0">
-                                <img src="/logo.png" alt="AMC Logo" className="w-full h-full object-contain drop-shadow-[0_0_10px_rgba(6,182,212,0.4)]" />
-                            </Link>
-                            <span className="text-2xl font-black uppercase tracking-tight">
+                        <div className="flex items-center justify-center lg:justify-start">
+                            <Link to="/" onClick={scrollToTop} className="text-2xl font-black uppercase tracking-tight hover:opacity-90 transition-opacity">
                                 <span className="text-white">AMC</span>{" "}
                                 <span className="text-cyan-400 drop-shadow-[0_0_12px_rgba(6,182,212,0.5)]">MEDICAL</span>
-                            </span>
+                            </Link>
                         </div>
 
                         <p className="text-slate-400 text-xs sm:text-sm leading-relaxed font-medium max-w-md text-center lg:text-left">

@@ -1,5 +1,5 @@
 import { Link } from 'react-router';
-import { ShieldCheck, Truck, Wrench, HeartHandshake, CheckCircle2 } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 import TrustedSupplierCard from '../components/TrustedSupplierCard';
 
 function About() {
